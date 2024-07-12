@@ -14,6 +14,9 @@ namespace JustinaBack.Models.Entities.Users
         public Medic? Medic { get; set; }
         public Guid MedicId { get; set; }
         public Patient? Patient { get; set; }
+        public Guid PatientId { get; set; }
+        public Healthcare Healthcare { get; set; }
+        public Guid HealthcareId { get; set; }
         public Lab? Lab { get; set; }
         public Guid LabId { get; set; }
         public GovEnt? GovEnt { get; set; }

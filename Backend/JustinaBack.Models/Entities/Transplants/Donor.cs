@@ -16,7 +16,6 @@ namespace JustinaBack.Models.Entities.Transplants
         public Guid PatientId { get; set; }
         public Organ Organ { get; set; }
         public Guid OrganId { get; set; }
-        public Transplant? Transplant { get; set; }
-        public Guid? TransplantId { get; set; }
+        public List<Transplant> Transplants { get; set; }
     }
 }
