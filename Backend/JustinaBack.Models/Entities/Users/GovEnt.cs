@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace JustinaBack.Models.Entities.Users
 {
-    public class Healthcare : BaseEntity<Guid>
+    public class GovEnt : BaseEntity<Guid>
     {
-        public string ImgSrc = string.Empty;
-
+        public string ImgSrc { get; set; } = string.Empty;
         public ApplicationUser ApplicationUser { get; set; }
-        public List<Medic> Medics { get; set; }
-        public List<Patient> Patients { get; set; }
     }
 }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace JustinaBack.Models.Entities
 {
-    public class BaseEntity
+    public abstract class BaseEntity<TId>
     {
-
+        public TId Id { get; set; }
     }
 }

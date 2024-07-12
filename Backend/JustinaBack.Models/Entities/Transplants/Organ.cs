@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace JustinaBack.Models.Entities.Transplants
 {
-    public class Organ
+    public class Organ : BaseEntity<Guid>
     {
+        public string OrganType { get; set; }
+
+        public List<Donor> Donors { get; set; }
+        public List<Recipient> Recipients { get; set; }
     }
 }
