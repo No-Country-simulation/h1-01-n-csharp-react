@@ -21,7 +21,6 @@
   </ItemGroup>
 	<ItemGroup>
 		<Folder Include="Configurations\" />
-		<Folder Include="Migrations\" />
 	</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JustinaBack.Models\JustinaBack.Models.csproj" />
