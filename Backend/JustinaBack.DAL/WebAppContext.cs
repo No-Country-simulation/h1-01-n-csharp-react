@@ -23,9 +23,9 @@ namespace JustinaBack.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var useMySql = true;
-
+     
             //modelBuilder.UseCollation("SQL_Latin1_General_CP1_CI_AS");
-            
+
             base.OnModelCreating(modelBuilder);
         }
         #endregion

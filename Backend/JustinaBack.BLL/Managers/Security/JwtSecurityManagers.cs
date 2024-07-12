@@ -6,12 +6,18 @@ using System.Security.Claims;
 
 namespace JustinaBack.BLL
 {
-    public class JwtSecurityManager
+    public class JwtSecurityManager : IJwtSecurityManager
     {
+        private readonly IUnitOfWork _unitOfWork;
+
+        public JwtSecurityManager(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
+        }
         public async Task<IdentityResult> ChangePasswordAsync(string email, UserManager<UserEF> _userManager, SignInManager<UserEF> signInManager, ChangePasswordRequestVM model)
         {
             var user = await _userManager.FindByEmailAsync(email);
-            return await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+            return await _userManager.ChangePasswordAsync(user!, model.CurrentPassword!, model.NewPassword!);
         }
 
         public async Task<JwtLoginResponseVM> LoginAsync(JwtSettings _jwtSettings, UserManager<UserEF> _userManager, SignInManager<UserEF> _signInManager, LoginVM model)
@@ -28,7 +34,7 @@ namespace JustinaBack.BLL
             if (result.Succeeded)
             {
                 var currentUser = await _userManager.FindByNameAsync(model.Username);
-                if (currentUser.DeletedBy == null || currentUser.DeletedBy == 0)
+                if (currentUser!.DeletedBy == null || currentUser.DeletedBy == 0)
                 {
                     var token = new UserToken();
 
@@ -39,9 +45,9 @@ namespace JustinaBack.BLL
 
                     token = JwtHelper.GenTokenkey(new UserToken
                     {
-                        EmailId = currentUser.Email,
+                        EmailId = currentUser.Email!,
                         GuidId = Guid.NewGuid(),
-                        UserName = currentUser.UserName,
+                        UserName = currentUser.UserName!,
                         Id = Convert.ToUInt16(currentUser.Id),
                     }, _jwtSettings, claims);
 
@@ -74,7 +80,12 @@ namespace JustinaBack.BLL
 
             user.Contact = contact;
 
-            return await _userManager.CreateAsync(user, model.Password);
+            return await _userManager.CreateAsync(user, model.Password!);
+        }
+
+        public async Task SaveAsync()
+        {
+            await _unitOfWork!.SaveAsync();
         }
     }
 }

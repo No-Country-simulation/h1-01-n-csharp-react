@@ -5,11 +5,11 @@ namespace JustinaBack.Models
     public class PhoneEF : IPublicKeyEntity, IAuditEntity
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public int CountryCode { get; set; }
-        public long Number { get; set; }
-        public bool IsMobile { get; set; }
-        public bool IsMainPhone { get; set; }
+        public string? Name { get; set; }
+        public int? CountryCode { get; set; }
+        public long? Number { get; set; }
+        public bool? IsMobile { get; set; }
+        public bool? IsMainPhone { get; set; }
         #region IPublicKeyEntity
         public Guid EntityPublicKey { get; set; }
         #endregion

@@ -11,8 +11,4 @@
     <ProjectReference Include="..\JustinaBack.Models\JustinaBack.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Contracts\" />
-  </ItemGroup>
-
 </Project>

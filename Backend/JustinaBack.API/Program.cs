@@ -1,9 +1,9 @@
 
+using JustinaBack.BLL;
 using JustinaBack.DAL;
 using JustinaBack.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -60,9 +60,7 @@ namespace JustinaBack.API
                 app.UseHttpsRedirection();
             }
 
-            app.UseHttpsRedirection();
-
-            app.UseStaticFiles();
+            app.UseHttpsRedirection();            
 
             app.UseRouting();
 
@@ -118,7 +116,8 @@ namespace JustinaBack.API
             void ConfigureDependencyInjection()
             {
                 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-                builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+                builder.Services.AddScoped<IDbInitializer, DbInitializer>(); 
+                builder.Services.AddScoped<IJwtSecurityManager, JwtSecurityManager>();
                 //builder.Services.AddScoped<ISecurityManager, SecurityManager>();                
                 //builder.Services.AddScoped<ICustomerProfileManager, CustomerProfileManager>();
 

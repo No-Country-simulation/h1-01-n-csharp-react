@@ -3,8 +3,8 @@ namespace JustinaBack.Models;
     public class CustomerEF : IPublicKeyEntity, IAuditEntity
     {
         public int Id { get; set; }
-        public int UserEFId { get; set; }
-        public UserEF User { get; set; }                                        
+        public int? UserEFId { get; set; }
+        public UserEF? User { get; set; }                                    
         #region IPublicKeyEntity
         public Guid EntityPublicKey { get; set; }
         #endregion        

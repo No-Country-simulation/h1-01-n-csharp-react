@@ -132,7 +132,7 @@ namespace JustinaBack.DAL
             };
 
             SetSecurityDefaults(phone, dateNow, true);
-            /*
+            
             email = "dev2024@gmail.com";
 
             contact = new ContactEF
@@ -163,7 +163,7 @@ namespace JustinaBack.DAL
 
             SetSecurityDefaults(user, dateNow, true);
 
-            _userManager.CreateAsync(user, "ksjkjvbsdkvnkjsASDAD!").GetAwaiter().GetResult();
+            _userManager.CreateAsync(user, "ksjkjvbsdkvnkjsA123!").GetAwaiter().GetResult();
 
             _userManager.AddToRoleAsync(user, UserRole.Customer.ToString()).GetAwaiter().GetResult();
 
@@ -176,7 +176,7 @@ namespace JustinaBack.DAL
             SetSecurityDefaults(customer, dateNow, true);
 
             _webAppContext.Customers!.Add(customer);
-            */
+            
 
             email = "pedro@rodridev.net";
 
@@ -204,7 +204,7 @@ namespace JustinaBack.DAL
             SetSecurityDefaults(user, dateNow, true);
 
             _userManager.CreateAsync(user, "ASDAXCVx21!").GetAwaiter().GetResult();
-
+            
             _userManager.AddToRoleAsync(user, UserRole.Admin.ToString()).GetAwaiter().GetResult();
 
             #endregion

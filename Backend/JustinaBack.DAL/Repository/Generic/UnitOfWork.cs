@@ -28,7 +28,7 @@ namespace JustinaBack.DAL
             _webAppContext = webAppContext;
             Users = new UserRepository(webAppContext);
             Contacts = new ContactRepository(webAppContext);
-                   
+            Customers = new CustomerRepository(webAppContext);       
         }
 
         #region Methods        
