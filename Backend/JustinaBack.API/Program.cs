@@ -2,6 +2,7 @@
 using JustinaBack.BLL;
 using JustinaBack.DAL;
 using JustinaBack.Models;
+using JustinaBack.Models.Utilities.MapperProfiles;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
