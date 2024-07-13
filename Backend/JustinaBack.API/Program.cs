@@ -1,6 +1,7 @@
 
 using JustinaBack.BLL;
 using JustinaBack.DAL;
+using JustinaBack.DAL.Data;
 using JustinaBack.Models;
 using JustinaBack.Models.Utilities.MapperProfiles;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -18,36 +19,20 @@ namespace JustinaBack.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
             builder.Services.AddControllers();
-
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-            builder.Services.AddDbContext<WebAppContext>(options => options.UseMySql(
-                connectionString,
-                new MySqlServerVersion(new Version(8, 0, 31))
-            ));
-
-            //Adding jwt service to program pipeline
-            builder.Services.AddJWTTokenServices(builder.Configuration);
-
-            //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<WebAppContext>();
-            builder.Services.AddIdentity<UserEF, Role>()
-                .AddDefaultTokenProviders()
-                .AddEntityFrameworkStores<WebAppContext>();
-
-            //Add Automapper
-            builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
             ConfigureSwagger();
             ConfigureDependencyInjection();
-
-            builder.Services.Configure<IdentityOptions>(
-                options => options.SignIn.RequireConfirmedEmail = true
-            );
                                  
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            //ServiceExtensions
+            builder.Services.AddBLLServiceCollection();
+            builder.Services.AddModelsProfiles();
+            builder.Services.AddDALServices(builder.Configuration);
+            builder.Services.AddAPIServiceCollection();
 
             var app = builder.Build();
 

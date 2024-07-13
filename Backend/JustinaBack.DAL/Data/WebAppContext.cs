@@ -8,7 +8,7 @@ using JustinaBack.Models.Entities.Medical;
 using JustinaBack.Models.Entities.Transplants;
 using System.Reflection;
 
-namespace JustinaBack.DAL
+namespace JustinaBack.DAL.Data
 {
     public class WebAppContext : IdentityDbContext<UserEF, Role, int>
     {
@@ -41,7 +41,7 @@ namespace JustinaBack.DAL
 
         #region Entities
         public new DbSet<UserEF>? Users { get; set; }
-        public DbSet<ContactEF>? Contacts { get; set; }               
+        public DbSet<ContactEF>? Contacts { get; set; }
         public DbSet<CustomerEF>? Customers { get; set; }
         #endregion
 
@@ -50,7 +50,7 @@ namespace JustinaBack.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var useMySql = true;
-     
+
             //modelBuilder.UseCollation("SQL_Latin1_General_CP1_CI_AS");
 
             base.OnModelCreating(modelBuilder);

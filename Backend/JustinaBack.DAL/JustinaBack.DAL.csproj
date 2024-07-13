@@ -22,8 +22,5 @@
   <ItemGroup>
     <ProjectReference Include="..\JustinaBack.Models\JustinaBack.Models.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Configurations\Transplants\" />
-  </ItemGroup>
 
 </Project>

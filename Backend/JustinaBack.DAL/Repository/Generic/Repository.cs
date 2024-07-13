@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using JustinaBack.DAL.Data;
 
 namespace JustinaBack.DAL
 {
