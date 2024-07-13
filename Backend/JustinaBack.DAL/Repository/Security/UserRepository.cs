@@ -1,10 +1,11 @@
-﻿using JustinaBack.Models;
+﻿using JustinaBack.DAL.Data;
+using JustinaBack.Models;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace JustinaBack.DAL
 {
- 
+
     public class UserRepository : Repository<UserEF>, IUserRepository
     {
         private WebAppContext _appContext;

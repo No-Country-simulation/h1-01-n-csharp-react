@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace JustinaBack.DAL
+namespace JustinaBack.DAL.Data
 {
     public class DbInitializer : IDbInitializer
     {
@@ -132,7 +132,7 @@ namespace JustinaBack.DAL
             };
 
             SetSecurityDefaults(phone, dateNow, true);
-            
+
             email = "dev2024@gmail.com";
 
             contact = new ContactEF
@@ -167,7 +167,7 @@ namespace JustinaBack.DAL
 
             _userManager.AddToRoleAsync(user, UserRole.Customer.ToString()).GetAwaiter().GetResult();
 
-            
+
             var customer = new CustomerEF
             {
                 User = user,
@@ -176,7 +176,7 @@ namespace JustinaBack.DAL
             SetSecurityDefaults(customer, dateNow, true);
 
             _webAppContext.Customers!.Add(customer);
-            
+
 
             email = "pedro@rodridev.net";
 
@@ -204,7 +204,7 @@ namespace JustinaBack.DAL
             SetSecurityDefaults(user, dateNow, true);
 
             _userManager.CreateAsync(user, "ASDAXCVx21!").GetAwaiter().GetResult();
-            
+
             _userManager.AddToRoleAsync(user, UserRole.Admin.ToString()).GetAwaiter().GetResult();
 
             #endregion

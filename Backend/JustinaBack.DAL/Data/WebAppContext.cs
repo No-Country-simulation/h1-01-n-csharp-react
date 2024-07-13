@@ -3,8 +3,12 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using JustinaBack.Models;
+using JustinaBack.Models.Entities.Users;
+using JustinaBack.Models.Entities.Medical;
+using JustinaBack.Models.Entities.Transplants;
+using System.Reflection;
 
-namespace JustinaBack.DAL
+namespace JustinaBack.DAL.Data
 {
     public class WebAppContext : IdentityDbContext<UserEF, Role, int>
     {
@@ -12,9 +16,32 @@ namespace JustinaBack.DAL
         {
         }
 
+        //Users
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Medic> Medics { get; set; }
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Healthcare> Healthcares { get; set; }
+        public DbSet<Lab> Labs { get; set; }
+        public DbSet<GovEnt> GovEnts { get; set; }
+        //Medical
+        public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Specialty> Specialties { get; set; }
+        public DbSet<Treatment> Treatments { get; set; }
+        public DbSet<Pathology> Pathologies { get; set; }
+        public DbSet<MedRecord> MedRecords { get; set; }
+        public DbSet<Medicine> Medicines { get; set; }
+        public DbSet<MedDosage> MedDosages { get; set; }
+        public DbSet<MedCheck> MedChecks { get; set; }
+        public DbSet<Document> Documents { get; set; }
+        //Transplant
+        public DbSet<Donor> Donors { get; set; }
+        public DbSet<Recipient> Recipients { get; set; }
+        public DbSet<Organ> Organs { get; set; }
+        public DbSet<Transplant> Transplants { get; set; }
+
         #region Entities
         public new DbSet<UserEF>? Users { get; set; }
-        public DbSet<ContactEF>? Contacts { get; set; }               
+        public DbSet<ContactEF>? Contacts { get; set; }
         public DbSet<CustomerEF>? Customers { get; set; }
         #endregion
 
@@ -23,10 +50,12 @@ namespace JustinaBack.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var useMySql = true;
-     
+
             //modelBuilder.UseCollation("SQL_Latin1_General_CP1_CI_AS");
 
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
         #endregion
 

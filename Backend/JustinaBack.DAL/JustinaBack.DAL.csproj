@@ -19,10 +19,6 @@
     <PackageReference Include="MySql.EntityFrameworkCore" Version="8.0.5" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
   </ItemGroup>
-	<ItemGroup>
-		<Folder Include="Configurations\" />
-		<Folder Include="Migrations\" />
-	</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JustinaBack.Models\JustinaBack.Models.csproj" />
   </ItemGroup>
