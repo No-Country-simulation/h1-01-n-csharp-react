@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JustinaBack.Models.Entities.Users
 {
-    public class Admin : BaseEntity<Guid>
+    public class Admin : BaseEntity<int>
     {
         public ApplicationUser ApplicationUser { get; set; }
     }

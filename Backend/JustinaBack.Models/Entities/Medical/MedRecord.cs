@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace JustinaBack.Models.Entities.Medical
 {
-    public class MedRecord : BaseEntity<Guid>
+    public class MedRecord : BaseEntity<int>
     {
         public string Details { get; set; }
 
         public Patient Patient { get; set; }
-        public Guid PatientId { get; set; }
+        public int PatientId { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JustinaBack.Models.Entities.Users
 {
-    public class Lab : BaseEntity<Guid>
+    public class Lab : BaseEntity<int>
     {
         public DateTime OpensAt { get; set; }
         public DateTime ClosesAt { get; set; }

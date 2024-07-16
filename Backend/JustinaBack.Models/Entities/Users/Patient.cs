@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JustinaBack.Models.Entities.Users
 {
-    public class Patient : BaseEntity<Guid>
+    public class Patient : BaseEntity<int>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -19,20 +19,20 @@ namespace JustinaBack.Models.Entities.Users
 
         public ApplicationUser ApplicationUser { get; set; }
         public MedRecord? MedRecord { get; set; }
-        public Guid? MedRecordId { get; set; }
+        public int? MedRecordId { get; set; }
         public Healthcare? Healthcare { get; set; }
-        public Guid? HealthcareId { get; set; }
+        public int? HealthcareId { get; set; }
         public Pathology? Pathology { get; set; }
-        public Guid? PathologyId { get; set; }
+        public int? PathologyId { get; set; }
         public List<Treatment> Treatments { get; set; }
         public List<Medic> Medics { get; set; }
         public List<Appointment> Appointments { get; set; }
 
         //Transplant
         public Donor? Donor { get; set; }
-        public Guid? DonorId { get; set; }
+        public int? DonorId { get; set; }
         public Recipient? Recipient { get; set; }
-        public Guid? RecipientId { get; set; }
+        public int? RecipientId { get; set; }
     }
 
     public enum BloodType

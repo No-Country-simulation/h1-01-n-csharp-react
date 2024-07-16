@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JustinaBack.Models.Entities.Users
 {
-    public class Medic : BaseEntity<Guid>
+    public class Medic : BaseEntity<int>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -16,9 +16,9 @@ namespace JustinaBack.Models.Entities.Users
 
         public ApplicationUser ApplicationUser { get; set; }
         public Specialty Specialty { get; set; }
-        public Guid SpecialtyId { get; set; }
+        public int SpecialtyId { get; set; }
         public Healthcare? Healthcare { get; set; }
-        public Guid? HealthcareId { get; set; }
+        public int? HealthcareId { get; set; }
         public List<Patient> Patients { get; set; }
         public List<Appointment> Appointments { get; set; }
     }

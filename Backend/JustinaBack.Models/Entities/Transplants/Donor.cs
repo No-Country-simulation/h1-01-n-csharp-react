@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace JustinaBack.Models.Entities.Transplants
 {
-    public class Donor : BaseEntity<Guid>
+    public class Donor : BaseEntity<int>
     {
         public string OrganSize { get; set; }
         public string Details { get; set; }
 
         public Patient Patient { get; set; }
-        public Guid PatientId { get; set; }
+        public int PatientId { get; set; }
         public Organ Organ { get; set; }
-        public Guid OrganId { get; set; }
+        public int OrganId { get; set; }
         public List<Transplant> Transplants { get; set; }
     }
 }

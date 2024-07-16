@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace JustinaBack.Models.Entities.Transplants
 {
-    public class Transplant : BaseEntity<Guid>
+    public class Transplant : BaseEntity<int>
     {
         public string Details { get; set; }
         public DateTime Date { get; set; }
         public Urgency Urgency { get; set; }
 
         public Donor Donor { get; set; }
-        public Guid DonorId { get; set; }
+        public int DonorId { get; set; }
         public Recipient Recipient { get; set; }
-        public Guid RecipientId { get; set; }
+        public int RecipientId { get; set; }
     }
 
     public enum Urgency

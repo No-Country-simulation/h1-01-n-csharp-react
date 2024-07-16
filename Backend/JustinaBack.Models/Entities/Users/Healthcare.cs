@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JustinaBack.Models.Entities.Users
 {
-    public class Healthcare : BaseEntity<Guid>
+    public class Healthcare : BaseEntity<int>
     {
         public string ImgSrc = string.Empty;
 

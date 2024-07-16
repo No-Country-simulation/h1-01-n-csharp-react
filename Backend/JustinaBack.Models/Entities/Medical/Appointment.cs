@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace JustinaBack.Models.Entities.Medical
 {
-    public class Appointment : BaseEntity<Guid>
+    public class Appointment : BaseEntity<int>
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
         public Medic Medic { get; set; }
-        public Guid MedicId { get; set; }
+        public int MedicId { get; set; }
         public Patient Patient { get; set; }
-        public Guid PatientId { get; set; }
+        public int PatientId { get; set; }
     }
 
     public enum AppointmentType

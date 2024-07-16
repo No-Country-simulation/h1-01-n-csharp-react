@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JustinaBack.Models.Entities.Medical
 {
-    public class Medicine : BaseEntity<Guid>
+    public class Medicine : BaseEntity<int>
     {
         public string Name { get; set; }
         public string Description { get; set; }
