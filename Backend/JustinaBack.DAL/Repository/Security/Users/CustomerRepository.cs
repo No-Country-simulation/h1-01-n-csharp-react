@@ -1,5 +1,5 @@
-﻿using JustinaBack.DAL.Data;
-using JustinaBack.Models;
+﻿using JustinaBack.Models;
+using JustinaBack.DAL.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace JustinaBack.DAL

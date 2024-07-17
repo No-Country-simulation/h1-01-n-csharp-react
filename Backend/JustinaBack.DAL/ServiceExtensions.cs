@@ -1,5 +1,6 @@
 ﻿using JustinaBack.Models.Entities.Users;
 using JustinaBack.Models;
+using JustinaBack.DAL.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -9,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using JustinaBack.DAL.Data;
 
 namespace JustinaBack.DAL
 {

@@ -1,5 +1,5 @@
-﻿using JustinaBack.DAL.Data;
-using JustinaBack.Models;
+﻿using JustinaBack.Models;
+using JustinaBack.DAL.Data;
 
 namespace JustinaBack.DAL
 {
