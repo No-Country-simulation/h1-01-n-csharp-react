@@ -27,6 +27,7 @@ namespace JustinaBack.Models.Entities.Users
         public List<Treatment> Treatments { get; set; }
         public List<Medic> Medics { get; set; }
         public List<Appointment> Appointments { get; set; }
+        public List<MedicPatient> MedicPatients { get; set; }
 
         //Transplant
         public Donor? Donor { get; set; }

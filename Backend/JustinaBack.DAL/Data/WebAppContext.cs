@@ -23,6 +23,7 @@ namespace JustinaBack.DAL.Data
         public DbSet<Healthcare> Healthcares { get; set; }
         public DbSet<Lab> Labs { get; set; }
         public DbSet<GovEnt> GovEnts { get; set; }
+        public DbSet<MedicPatient> MedicPatients { get; set; }
         //Medical
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Specialty> Specialties { get; set; }

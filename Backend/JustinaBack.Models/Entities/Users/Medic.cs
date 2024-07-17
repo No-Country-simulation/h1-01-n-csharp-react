@@ -23,6 +23,7 @@ namespace JustinaBack.Models.Entities.Users
         public int? HealthcareId { get; set; }
         public List<Patient> Patients { get; set; }
         public List<Appointment> Appointments { get; set; }
+        public List<MedicPatient> MedicPatients { get; set; }
     }
 
     public enum MedicRole
