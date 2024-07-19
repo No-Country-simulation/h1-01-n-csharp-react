@@ -1,3 +1,124 @@
-.containerLogin{
-    
+@media screen and (max-width: 768px) {
+    .containerLogin {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 60px;
+    }
+
+    .comunicarse {
+        width: 100%;
+        height: 40px;
+        border: 1px solid #E4572E;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .containerLogo {
+        margin-bottom: 30px;
+        width: 100%;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .containerLogin img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+
+    .bienvenida {
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+    .formLogin {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .formLogin button {
+        margin-top: 20px;
+        height: 40px;
+        font-size: 15px;
+        font-weight: 600;
+        color: white;
+        background-color: #FFC914;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .politicasCondiciones {
+        border: none;
+        text-align: center;
+        font-size: 10px;
+        font-weight: 400;
+        margin-bottom: 30px;
+    }
+
+    .politicasCondiciones a{
+        text-decoration: none;
+        color: #E4572E;
+    }
+
+    .divInput {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .divInput label {
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .divInput input {
+        border: none;
+        border-radius: 5px;
+        height: 40px;
+        background-color: rgba(229, 87, 46, 0.17);
+    }
+
+    .divInput span {
+        font-size: 10px;
+        font-weight: 300;
+    }
+
+    .divRemember {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .divRemember div {
+        display: flex;
+        align-items: center;
+    }
+
+    .divRemember div input {
+        height: 14px;
+        width: 14px;
+        border: 1px solid black;
+        border-radius: 1px;
+    }
+
+    .divRemember div label,
+    .divRemember a,
+    .comunicarse {
+        font-size: 11px;
+        font-weight: 400;
+    }
+
+    .divRemember a {
+        color: black;
+        text-decoration: none;
+    }
 }
