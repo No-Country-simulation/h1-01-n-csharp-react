@@ -43,8 +43,10 @@ namespace Infrastructure
                 opt.Password.RequireDigit = false;
                 opt.Password.RequiredUniqueChars = 3;
             })
+            .AddRoles<ApplicationRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
+
 
             // JWT
             services.AddAuthentication(options =>

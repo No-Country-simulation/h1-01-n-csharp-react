@@ -1,7 +1,9 @@
 using API;
 using Core;
+using Domain.Entities.Users;
 using Infrastructure;
 using Mappings;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -74,5 +76,52 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+#region Roles
+//Roles
+
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager =
+        scope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
+
+    var roles = new[] { "Admin", "Medic", "Patient", "Healthcare", "Lab", "GovEnt" };
+
+    foreach (var role in roles)
+    {
+        //This conditional ensures the roles are unique
+        if (!await roleManager.RoleExistsAsync(role))
+            await roleManager.CreateAsync(new ApplicationRole(role));
+    }
+}
+
+
+#endregion
+
+#region Admin
+
+using (var scope = app.Services.CreateScope())
+{
+    //Creating a default admin user with Admin role, one time
+    var userManager =
+        scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+    string email = "admin@admin.com";
+    string password = "Admin123-";
+
+    if (await userManager.FindByEmailAsync(email) == null)
+    {
+        var user = new ApplicationUser();
+        user.UserName = email;
+        user.Email = email;
+        user.EmailConfirmed = true;
+        user.Address = "";
+
+        await userManager.CreateAsync(user, password);
+
+        await userManager.AddToRoleAsync(user, "Admin");
+    }
+}
+#endregion
 
 app.Run();
