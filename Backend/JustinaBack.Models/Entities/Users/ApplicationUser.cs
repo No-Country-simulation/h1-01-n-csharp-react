@@ -22,6 +22,6 @@ namespace JustinaBack.Models.Entities.Users
         public GovEnt? GovEnt { get; set; }
         public int GovEntId { get; set; }
 
-        public string Location { get; set; } = string.Empty;
+        public string Address { get; set; }
     }
 }

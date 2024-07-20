@@ -19,7 +19,7 @@ namespace JustinaBack.DAL.Configurations.Users
                 new Specialty { Id = 2, Type = "Odontología" },
                 new Specialty { Id = 3, Type = "Kinesiología" },
                 new Specialty { Id = 4, Type = "Fonoaudiología" },
-                new Specialty { Id = 5, Type = "Nutrición" },
+                new Specialty { Id = 5, Type = "Cirugía" },
                 new Specialty { Id = 6, Type = "Obstetricia" },
                 new Specialty { Id = 7, Type = "Enfermería" },
                 new Specialty { Id = 8, Type = "Oftalmología" },
