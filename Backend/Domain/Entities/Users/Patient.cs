@@ -16,6 +16,7 @@ namespace Domain.Entities.Users
         public string DNI { get; set; }
         public DateTime BirthDate { get; set; }
         public bool IsManagedByParent { get; set; }
+        public string ParentName { get; set; } = string.Empty;
         public BloodType BloodType { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }

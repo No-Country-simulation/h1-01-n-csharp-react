@@ -22,6 +22,6 @@ namespace Domain.Entities.Users
         public GovEnt? GovEnt { get; set; }
         public int? GovEntId { get; set; }
 
-        public string Address { get; set; }
+        public string Address { get; set; } = string.Empty;
     }
 }

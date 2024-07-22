@@ -85,6 +85,7 @@ using (var scope = app.Services.CreateScope())
     var roleManager =
         scope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
 
+    //If modified, make sure to check UserRoles in DTOs layer -> Register -> UserRoles
     var roles = new[] { "Admin", "Medic", "Patient", "Healthcare", "Lab", "GovEnt" };
 
     foreach (var role in roles)

@@ -11,8 +11,8 @@ namespace Domain.Entities.Users
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int DNI { get; set; }
-        public int License { get; set; }
+        public string DNI { get; set; }
+        public string License { get; set; }
         public string About { get; set; } = string.Empty;
         public string ImgSrc { get; set; } = string.Empty;
 
