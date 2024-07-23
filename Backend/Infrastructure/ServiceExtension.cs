@@ -1,6 +1,8 @@
 ﻿using Azure.Core.Extensions;
 using Domain.Entities.Users;
 using Infrastructure.Data;
+using Infrastructure.Repositories;
+using Infrastructure.Repositories.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -32,6 +34,8 @@ namespace Infrastructure
                    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             //Repositories
+            services.AddScoped<IMedicRepository, MedicRepository>();
+            services.AddScoped<IPatientRepository, PatientRepository>();
 
             // Identity
             services.AddIdentity<ApplicationUser, ApplicationRole>(opt =>

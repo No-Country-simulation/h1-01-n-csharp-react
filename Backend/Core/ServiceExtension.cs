@@ -20,6 +20,7 @@ namespace Core
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             //Services
+            services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IMedicService, MedicService>();
             services.AddScoped<IPatientService, PatientService>();

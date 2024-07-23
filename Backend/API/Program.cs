@@ -117,6 +117,7 @@ using (var scope = app.Services.CreateScope())
         user.Email = email;
         user.EmailConfirmed = true;
         user.Address = "";
+        user.Admin = new Admin();
 
         await userManager.CreateAsync(user, password);
 
