@@ -1,4 +1,5 @@
-﻿using Core.Services.Interfaces;
+﻿using Core.Behaviors;
+using Core.Services.Interfaces;
 using DTOs;
 using DTOs.Register;
 using Microsoft.Extensions.Logging;
@@ -14,13 +15,16 @@ namespace Core.Services
     {
         private readonly IAuthenticationService _authenticationService;
         private readonly ILogger<MedicService> _logger;
+        private readonly IValidationBehavior<RegisterMedicRequest> _validationBehavior;
 
         public MedicService(
             IAuthenticationService authenticationService,
-            ILogger<MedicService> logger)
+            ILogger<MedicService> logger,
+            IValidationBehavior<RegisterMedicRequest> validationBehavior)
         {
             _authenticationService = authenticationService;
             _logger = logger;
+            _validationBehavior = validationBehavior;
         }
 
         public async Task<ServiceResponse<RegisterResponse>> RegisterMedicUser(RegisterMedicRequest request)
@@ -29,6 +33,8 @@ namespace Core.Services
 
             try
             {
+                await _validationBehavior.ValidateFields(request);
+
                 RegisterResponse registerResponse =
                     await _authenticationService.RegisterMedicAsync(request);
 

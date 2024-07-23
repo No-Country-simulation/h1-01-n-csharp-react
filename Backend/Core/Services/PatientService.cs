@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Behaviors;
 
 namespace Core.Services
 {
@@ -14,13 +15,16 @@ namespace Core.Services
     {
         private readonly IAuthenticationService _authenticationService;
         private readonly ILogger<PatientService> _logger;
+        private readonly IValidationBehavior<RegisterPatientRequest> _validationBehavior;
 
         public PatientService(
             IAuthenticationService authenticationService,
-            ILogger<PatientService> logger)
+            ILogger<PatientService> logger,
+            IValidationBehavior<RegisterPatientRequest> validationBehavior)
         {
             _authenticationService = authenticationService;
             _logger = logger;
+            _validationBehavior = validationBehavior;
         }
 
         public async Task<ServiceResponse<RegisterResponse>> RegisterPatientUser(RegisterPatientRequest request)
@@ -29,6 +33,8 @@ namespace Core.Services
 
             try
             {
+                await _validationBehavior.ValidateFields(request);
+
                 RegisterResponse registerResponse =
                     await _authenticationService.RegisterPatientAsync(request);
 
