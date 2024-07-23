@@ -16,6 +16,7 @@ namespace Domain.Entities.Users
         public string About { get; set; } = string.Empty;
         public string ImgSrc { get; set; } = string.Empty;
 
+
         public ApplicationUser ApplicationUser { get; set; }
         public Specialty Specialty { get; set; }
         public int SpecialtyId { get; set; }

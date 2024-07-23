@@ -23,5 +23,6 @@ namespace Domain.Entities.Users
         public int? GovEntId { get; set; }
 
         public string Address { get; set; } = string.Empty;
+        public bool IsDeleted { get; set; } = false;
     }
 }

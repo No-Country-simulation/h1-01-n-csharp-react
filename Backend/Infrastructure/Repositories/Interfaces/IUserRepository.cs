@@ -1,5 +1,4 @@
 ﻿using Domain.Entities.Users;
-using DTOs.Medic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories.Interfaces
 {
-    public interface IMedicRepository : IGenericRepository<Medic, int>
+    public interface IUserRepository
     {
-        Task<List<MedicGetDto>> GetAllMedicUsersWithSpecialties();
-        Task<bool> FindDNIInMedics(string DNI);
+        Task<bool> IsDNIInUse(string DNI);
+        void Update(ApplicationUser user);
+        Task SaveChangesAsync();
     }
 }

@@ -11,5 +11,6 @@ namespace Infrastructure.Repositories.Interfaces
     public interface IPatientRepository : IGenericRepository<Patient, int>
     {
         Task<List<PatientGetDto>> GetAllPatientUsers();
+        Task<bool> FindDNIInPatients(string DNI);
     }
 }

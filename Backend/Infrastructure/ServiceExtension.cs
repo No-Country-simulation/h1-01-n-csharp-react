@@ -34,6 +34,7 @@ namespace Infrastructure
                    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             //Repositories
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMedicRepository, MedicRepository>();
             services.AddScoped<IPatientRepository, PatientRepository>();
 

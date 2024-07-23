@@ -27,10 +27,17 @@ namespace Infrastructure.Repositories
         public async Task<List<MedicGetDto>> GetAllMedicUsersWithSpecialties()
         {
             var medics = await Entities
+                    .Where(m => !m.ApplicationUser.IsDeleted)
                     .ProjectTo<MedicGetDto>(_mapper.ConfigurationProvider)
                     .ToListAsync();
 
             return medics;
+        }
+
+        public async Task<bool> FindDNIInMedics(string DNI)
+        {
+            return await _context.Medics
+                .AnyAsync(medic => medic.DNI == DNI && !medic.ApplicationUser.IsDeleted);
         }
     }
 }

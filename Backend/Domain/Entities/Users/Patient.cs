@@ -19,6 +19,7 @@ namespace Domain.Entities.Users
         public string ParentName { get; set; } = string.Empty;
         public BloodType BloodType { get; set; }
 
+
         public ApplicationUser ApplicationUser { get; set; }
         public MedRecord? MedRecord { get; set; }
         public int? MedRecordId { get; set; }
