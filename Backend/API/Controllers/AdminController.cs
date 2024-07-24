@@ -7,6 +7,7 @@ using Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using System.ComponentModel.DataAnnotations;
 using Domain.Entities.Medical;
+using DTOs.User;
 
 namespace API.Controllers
 {
@@ -32,6 +33,12 @@ namespace API.Controllers
         public async Task<ActionResult<ServiceResponse<List<MedicGetDto>>>> GetAllPatientUsers()
         {
             return Ok(await _adminService.GetAllPatientUsers());
+        }
+
+        [HttpGet("GetDeletedUsers")]
+        public async Task<ActionResult<ServiceResponse<List<DeletedUserGetDto>>>> GetDeletedUsers()
+        {
+            return Ok(await _adminService.GetDeletedUsers());
         }
 
         [HttpDelete("SoftDeleteUser/{email}")]

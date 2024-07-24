@@ -7,6 +7,7 @@ using DTOs;
 using DTOs.Medic;
 using DTOs.Patient;
 using DTOs.Register;
+using DTOs.User;
 using Infrastructure.Repositories.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
@@ -71,6 +72,24 @@ namespace Core.Services
                 serviceResponse.Success = false;
                 serviceResponse.Message = ex.Message;
                 _logger.LogError(ex, $"Error al obtener Pacientes - {ex.Message}");
+            }
+
+            return serviceResponse;
+        }
+
+        public async Task<ServiceResponse<List<DeletedUserGetDto>>> GetDeletedUsers()
+        {
+            var serviceResponse = new ServiceResponse<List<DeletedUserGetDto>>();
+
+            try
+            {
+                serviceResponse.Data = await _userRepository.GetDeletedUsers();
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+                _logger.LogError(ex, $"Error al obtener Usuarios eliminados - {ex.Message}");
             }
 
             return serviceResponse;

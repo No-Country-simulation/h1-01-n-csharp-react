@@ -1,4 +1,5 @@
 ﻿using Domain.Entities.Users;
+using DTOs.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace Infrastructure.Repositories.Interfaces
 {
     public interface IUserRepository
     {
+        Task<List<DeletedUserGetDto>> GetDeletedUsers();
         Task<bool> IsDNIInUse(string DNI);
         void Update(ApplicationUser user);
         Task SaveChangesAsync();

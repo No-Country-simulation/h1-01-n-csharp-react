@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTOs.Patient;
+using DTOs.User;
 
 namespace Core.Services.Interfaces
 {
@@ -13,6 +14,7 @@ namespace Core.Services.Interfaces
     {
         Task<ServiceResponse<List<MedicGetDto>>> GetAllMedicUsers();
         Task<ServiceResponse<List<PatientGetDto>>> GetAllPatientUsers();
+        Task<ServiceResponse<List<DeletedUserGetDto>>> GetDeletedUsers();
         Task<ServiceResponse<DeleteResponse>> SoftDeleteUser(string email);
     }
 }
