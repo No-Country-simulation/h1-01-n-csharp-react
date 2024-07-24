@@ -17,5 +17,6 @@ namespace Core.Services.Interfaces
         Task<ServiceResponse<List<DeletedUserGetDto>>> GetDeletedUsers();
         Task<ServiceResponse<DeleteResponse>> SoftDeleteUser(string email);
         Task<ServiceResponse<DeleteResponse>> HardDeleteUser(int id);
+        Task<ServiceResponse<object>> RestoreDeletedUser(int id);
     }
 }

@@ -52,5 +52,11 @@ namespace API.Controllers
         {
             return Ok(await _adminService.HardDeleteUser(id));
         }
+
+        [HttpPatch("RestoreUser/{id}")]
+        public async Task<ActionResult<ServiceResponse<object>>> RestoreDeletedUser(int id)
+        {
+            return Ok(await _adminService.RestoreDeletedUser(id));
+        }
     }
 }

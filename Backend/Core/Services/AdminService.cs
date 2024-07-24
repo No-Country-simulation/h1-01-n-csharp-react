@@ -147,5 +147,33 @@ namespace Core.Services
 
             return serviceResponse;
         }
+
+        public async Task<ServiceResponse<object>> RestoreDeletedUser(int id)
+        {
+            var serviceResponse = new ServiceResponse<object>();
+
+            try
+            {
+                var user = await _userManager.FindByIdAsync(id.ToString());
+                if (user == null || !user.IsDeleted)
+                {
+                    throw new KeyNotFoundException($"Usuario no encontrado o no ha sido eliminado.");
+                }
+
+                user.IsDeleted = false;
+                _userRepository.Update(user);
+                await _userRepository.SaveChangesAsync();
+
+                serviceResponse.Message = $"Usuario restaurado.";
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+                _logger.LogError(ex, $"Error al restaurar usuario - {ex.Message}");
+            }
+
+            return serviceResponse;
+        }
     }
 }
