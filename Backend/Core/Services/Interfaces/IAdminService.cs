@@ -16,5 +16,6 @@ namespace Core.Services.Interfaces
         Task<ServiceResponse<List<PatientGetDto>>> GetAllPatientUsers();
         Task<ServiceResponse<List<DeletedUserGetDto>>> GetDeletedUsers();
         Task<ServiceResponse<DeleteResponse>> SoftDeleteUser(string email);
+        Task<ServiceResponse<DeleteResponse>> HardDeleteUser(int id);
     }
 }

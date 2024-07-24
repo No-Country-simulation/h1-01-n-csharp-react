@@ -67,6 +67,16 @@ namespace Infrastructure.Repositories
             return isMedic || isPatient;
         }
 
+        public bool Delete(ApplicationUser user)
+        {
+            if (user == null)
+                return false;
+
+            _context.Users.Remove(user);
+
+            return true;
+        }
+
         public void Update(ApplicationUser user)
         {
             _context.Users.Update(user);

@@ -46,5 +46,11 @@ namespace API.Controllers
         {
             return Ok(await _adminService.SoftDeleteUser(email));
         }
+
+        [HttpDelete("HardDeleteUser/{id}")]
+        public async Task<ActionResult<ServiceResponse<DeleteResponse>>> HardDeleteUser(int id)
+        {
+            return Ok(await _adminService.HardDeleteUser(id));
+        }
     }
 }

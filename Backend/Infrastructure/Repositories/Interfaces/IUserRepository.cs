@@ -12,6 +12,7 @@ namespace Infrastructure.Repositories.Interfaces
     {
         Task<List<DeletedUserGetDto>> GetDeletedUsers();
         Task<bool> IsDNIInUse(string DNI);
+        bool Delete(ApplicationUser user);
         void Update(ApplicationUser user);
         Task SaveChangesAsync();
     }

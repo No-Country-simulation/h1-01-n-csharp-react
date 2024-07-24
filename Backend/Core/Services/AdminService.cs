@@ -122,5 +122,30 @@ namespace Core.Services
 
             return serviceResponse;
         }
+
+        public async Task<ServiceResponse<DeleteResponse>> HardDeleteUser(int id)
+        {
+            var serviceResponse = new ServiceResponse<DeleteResponse>();
+
+            try
+            {
+                var user = await _userManager.FindByIdAsync(id.ToString());
+                if (user == null || !user.IsDeleted)
+                    throw new KeyNotFoundException($"Usuario no encontrado o no marcado para eliminar.");
+
+                _userRepository.Delete(user);
+                await _userRepository.SaveChangesAsync();
+
+                serviceResponse.Message = $"Usuario eliminado definitivamente.";
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+                _logger.LogError(ex, $"Error al eliminar usuario - {ex.Message}");
+            }
+
+            return serviceResponse;
+        }
     }
 }
