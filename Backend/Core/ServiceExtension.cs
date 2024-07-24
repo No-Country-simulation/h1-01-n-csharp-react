@@ -22,8 +22,11 @@ namespace Core
             //Services
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IMedicineService, MedicineService>();
             services.AddScoped<IMedicService, MedicService>();
+            services.AddScoped<IPathologyService, PathologyService>();
             services.AddScoped<IPatientService, PatientService>();
+            services.AddScoped<ISpecialtyService, SpecialtyService>();
 
             // Validation Behavior
             services.AddTransient(typeof(IValidationBehavior<>), typeof(ValidationBehavior<>));
