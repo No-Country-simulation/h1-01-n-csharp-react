@@ -1,0 +1,76 @@
+.containerStep {
+    width: 25%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(255, 102, 196, 0.5) -0.46%, rgba(81, 112, 255, 0.5) 54.34%, rgba(81, 112, 255, 0.5) 99.15%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 40px;
+    box-sizing: border-box;
+    border-radius: 24px;
+}
+
+.divLogoStep{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoStep{
+    width: 100%;
+}
+
+.containerFormRegisterMedico {
+    background-image: url('../../assets/images/backgroundDesktop.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 75%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.step{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stepTitle{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.divStep{
+    display: flex;
+    gap: 20px;
+}
+
+.stepSecuence{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.circleStep{
+    border-radius: 50%;
+    border: 2px solid #0A1629;
+    height: 15px;
+    width: 15px;
+    background: #0A16294D;
+}
+
+.textStep{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.line{
+    width: 1px;
+    height: 20px;
+    background: #0A1629;
+}

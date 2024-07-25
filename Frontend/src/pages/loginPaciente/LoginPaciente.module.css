@@ -1,0 +1,53 @@
+.backgroundPacienteDesktop {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.imagePacienteDesktop {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.backgroundPacienteMobile {
+    display: none;
+}
+
+.containerFormLoginPaciente {
+    border-radius: 14px;
+    padding: 10px 12px;
+    backdrop-filter: blur(2px);
+    background-color: rgba(255, 255, 255, 0.151);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    position: absolute;
+}
+
+@media screen and (max-width: 768px) {
+    .backgroundPacienteDesktop {
+        display: none;
+    }
+
+    .backgroundPacienteMobile {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .imagePacienteMobile {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .containerFormLoginPaciente {
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background: none;
+        backdrop-filter: none;
+        position: absolute;
+    }
+}

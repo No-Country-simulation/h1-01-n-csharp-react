@@ -1,5 +1,91 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
 body {
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Nunito Sans', sans-serif !important;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 10px;
+    box-sizing: border-box;
+    gap: 10px;
+}
+
+.containerLogo {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.logoJustina {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.divInput {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.labelJustina {
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.inputJustina {
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    background-color: #FFFFFF;
+    padding-left: 10px;
+}
+
+.buttonLogin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    width: 100px;
+    height: 40px;
+    padding: 15px;
+    border-radius: 14px;
+    background: linear-gradient(90deg, #3F8CFF 0%, #DE92EB 100%);
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.form {
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .containerLogin{
+        flex-direction: column;
+        padding: 20px;
+        width: 100%;
+    }
+
+    .containerLogo{
+        width: 90%;
+        gap: 50px;
+    }
 }

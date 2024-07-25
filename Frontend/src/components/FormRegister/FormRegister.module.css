@@ -1,0 +1,30 @@
+.containerRegisterForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.inputRegister {
+    background: #FF66C475 !important;
+}
+
+.divButton {
+    width: 75vw;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 100px;
+    box-sizing: border-box;
+}
+
+.stepNumber {
+    font-size: 10px;
+    font-weight: 700;
+    color: #677077;
+}
+
+.stepText {
+    font-size: 18px;
+    font-weight: 700;
+}

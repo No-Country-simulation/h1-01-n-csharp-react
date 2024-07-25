@@ -1,11 +1,11 @@
-import LoginForm from './components/Login/index'
+import RegisterMedico from './pages/registerMedico/index'
 import './App.css'
 
 function App() {
 
   return (
     <>
-      <LoginForm/>
+      <RegisterMedico/>
     </>
   )
 }

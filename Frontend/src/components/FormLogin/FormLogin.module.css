@@ -1,0 +1,29 @@
+.containerLoginForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.divRemember {
+    width: 100%;
+    text-align: right;
+}
+
+.recoverAccount {
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: none;
+    color: black;
+}
+
+.registerLink{
+    color: blue;
+}
+
+@media screen and (max-width: 768px) {
+    .formLogin{
+        width: 80%;
+    }
+}
