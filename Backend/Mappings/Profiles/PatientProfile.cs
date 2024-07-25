@@ -17,6 +17,9 @@ namespace Mappings.Profiles
                 .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.ApplicationUser.Address))
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.ApplicationUser.Email))
                 .ForMember(dest => dest.BloodType, opt => opt.MapFrom(src => src.BloodType.ToString()));
+
+            CreateMap<Patient, PatientEmailGetDto>()
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.ApplicationUser.Email));
         }
     }
 }

@@ -34,6 +34,16 @@ namespace Infrastructure.Repositories
             return patients;
         }
 
+        public async Task<List<PatientEmailGetDto>> GetPatientsEmail(string email)
+        {
+            var patients = await Entities
+                    .Where(p => !p.ApplicationUser.IsDeleted && p.ApplicationUser.Email.ToLower().Contains(email.ToLower()))
+                    .ProjectTo<PatientEmailGetDto>(_mapper.ConfigurationProvider)
+                    .ToListAsync();
+
+            return patients;
+        }
+
         public async Task<bool> FindDNIInPatients(string DNI)
         {
             return await _context.Patients
