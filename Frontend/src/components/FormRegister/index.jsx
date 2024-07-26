@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { getAllSpecialties } from '../../api/specialtyService'
 import PropTypes from 'prop-types'
 import style from './FormRegister.module.css'
 import icons from '../../assets/icons/icons'
@@ -18,11 +19,26 @@ function FormRegister({ onFieldFilled }) {
 
   const handleFocus = (field) => {
     setFocusedField(field)
-  }
+  };
 
   const handleStep = (step) => {
-    setFocusedStep(step);
-  }
+    setFocusedStep(step)
+  };
+
+  const [specialties, setSpecialties] = useState([])
+
+  useEffect(() => {
+    const fetchSpecialties = async () => {
+      try {
+        const data = await getAllSpecialties()
+        setSpecialties(data)
+      } catch (error) {
+        console.error('Error fetching specialties:', error)
+      }
+    };
+
+    fetchSpecialties()
+  }, [])
 
   useEffect(() => {
     onFieldFilled({
@@ -32,8 +48,8 @@ function FormRegister({ onFieldFilled }) {
       'Paso 4': license !== '',
       'Paso 5': specialty !== '',
       'Paso 6': email !== ''
-    });
-  }, [rolId, name, surname, dni, license, specialty, email, onFieldFilled])
+    })
+  }, [rolId, name, surname, dni, license, specialty, email])
 
   return (
     <div className={style.containerRegisterForm}>
@@ -67,7 +83,12 @@ function FormRegister({ onFieldFilled }) {
         <div className="divInput" onFocus={() => handleStep('Paso 5')}>
           <label className="labelJustina" htmlFor="">Especialidad *</label>
           <select className={`${style.inputRegister} inputJustina`} value={specialty} onFocus={() => handleFocus('Selecciona tu especialidad')} onChange={(e) => setSpecialty(e.target.value)}>
-            <option value="">Especialidad</option>
+            <option value="0">Especialidad</option>
+            {specialties.map((specialty) => (
+              <option key={specialty.id} value={specialty.id}>
+                {specialty.type}
+              </option>
+            ))}
           </select>
         </div>
         <div className="divInput" onFocus={() => handleStep('Paso 6')}>
@@ -76,14 +97,14 @@ function FormRegister({ onFieldFilled }) {
         </div>
       </form>
       <div className={style.divButton}>
-        <button className="buttonLogin"><img src={icons.ArrowRight}/>Guardar</button>
+        <button className="buttonLogin"><img src={icons.ArrowRight} alt="Guardar" />Guardar</button>
       </div>
     </div>
   )
 }
 
 FormRegister.propTypes = {
-  onFieldFilled: PropTypes.string
+  onFieldFilled: PropTypes.func
 }
 
 export default FormRegister

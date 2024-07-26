@@ -9,7 +9,7 @@ export const getAllSpecialties = async () => {
         'Accept': 'text/plain'
       }
     });
-    return response.data;
+    return response.data.data;
   } catch (error) {
     console.error('Error fetching specialties:', error);
     throw error;

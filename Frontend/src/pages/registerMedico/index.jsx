@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import RegisterForm from '../../components/FormRegister/index'
 import images from '../../assets/images/images'
 import style from './RegisterMedico.module.css'
@@ -12,11 +12,11 @@ function RegisterMedico() {
         'Paso 4': false,
         'Paso 5': false,
         'Paso 6': false
-    });
+    })
 
-    const handleFieldFilled = (fields) => {
+    const handleFieldFilled = useCallback((fields) => {
         setFilledFields(fields)
-    }
+    }, [])
 
     const getStepStyle = (step) => {
         return filledFields[step] ? { backgroundColor: '#ff669c' } : {}

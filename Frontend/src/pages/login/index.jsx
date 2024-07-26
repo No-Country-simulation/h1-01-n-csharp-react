@@ -1,9 +1,14 @@
+import { useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import LoginForm from '../../components/FormLogin/index';
-import images from '../../assets/images/images';
-import style from './LoginMedico.module.css';
+import LoginForm from '../../components/FormLogin/index'
+import images from '../../assets/images/images'
+import style from './LoginMedico.module.css'
 
-function Login({ userType }) {
+function Login() {
+  const location = useLocation()
+  const params = new URLSearchParams(location.search)
+  const userType = params.get('userType')
+
   return (
     <div className="container">
       <div className={style.backgroundLogin}>
@@ -21,7 +26,7 @@ function Login({ userType }) {
 }
 
 Login.propTypes = {
-  userType: PropTypes.string.isRequired
+  userType: PropTypes.string
 }
 
-export default Login;
+export default Login
