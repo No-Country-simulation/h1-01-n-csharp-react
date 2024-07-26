@@ -1,4 +1,5 @@
 import images from '../../assets/images/images'
+import icons from '../../assets/icons/icons'
 import style from './FormLogin.module.css'
 import '../../index.css'
 
@@ -7,7 +8,7 @@ function FormLogin() {
   return (
     <div className={style.containerLoginForm}>
       <div className="containerLogo">
-        <img className="logoJustina" src={images.LogoJustina} />
+        <img className="logoJustina" src={images.LogoJustina2} />
         <h1 >Inicia sesión</h1>
       </div>
       <form className="form">
@@ -22,7 +23,7 @@ function FormLogin() {
         <div className={style.divRemember}>
           <a className={style.recoverAccount} href="">¿Olvidaste tu contraseña?</a>
         </div>
-        <button className="buttonLogin">Entrar</button>
+        <button className="buttonLogin"><img src={icons.ArrowRight}/>Entrar</button>
       </form>
       <p >¿No tienes cuenta? <a className={style.registerLink} href="">Registrate aquí</a></p>
     </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import style from './FormRegister.module.css'
+import icons from '../../assets/icons/icons'
 import '../../index.css'
 
 function FormRegister({ onFieldFilled }) {
@@ -75,7 +76,7 @@ function FormRegister({ onFieldFilled }) {
         </div>
       </form>
       <div className={style.divButton}>
-        <button className="buttonLogin">Guardar</button>
+        <button className="buttonLogin"><img src={icons.ArrowRight}/>Guardar</button>
       </div>
     </div>
   )

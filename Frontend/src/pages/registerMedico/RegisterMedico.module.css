@@ -74,3 +74,13 @@
     height: 20px;
     background: #0A1629;
 }
+
+@media screen and (max-width: 768px) {
+    .containerStep{
+        display: none;
+    }
+
+    .containerFormRegisterMedico{
+        width: 100%;
+    }
+}

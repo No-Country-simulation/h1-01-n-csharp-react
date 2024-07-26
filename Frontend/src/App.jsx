@@ -1,11 +1,11 @@
-import RegisterMedico from './pages/registerMedico/index'
+import LoginMedico from './pages/registerMedico/index'
 import './App.css'
 
 function App() {
 
   return (
     <>
-      <RegisterMedico/>
+      <LoginMedico/>
     </>
   )
 }
