@@ -20,9 +20,11 @@ namespace Core
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             //Services
+            services.AddHttpContextAccessor();
             services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IMedicineService, MedicineService>();
+            services.AddScoped<IMedicPatientService, MedicPatientService>();
             services.AddScoped<IMedicService, MedicService>();
             services.AddScoped<IPathologyService, PathologyService>();
             services.AddScoped<IPatientService, PatientService>();

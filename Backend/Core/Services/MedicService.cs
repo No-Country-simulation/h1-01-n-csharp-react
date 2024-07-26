@@ -2,6 +2,7 @@
 using Core.Services.Interfaces;
 using DTOs;
 using DTOs.Register;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -14,17 +15,38 @@ namespace Core.Services
     public class MedicService : IMedicService
     {
         private readonly IAuthenticationService _authenticationService;
+        private readonly IHttpContextAccessor _contextAccessor;
         private readonly ILogger<MedicService> _logger;
         private readonly IValidationBehavior<RegisterMedicRequest> _validationBehavior;
 
         public MedicService(
             IAuthenticationService authenticationService,
+            IHttpContextAccessor contextAccessor,
             ILogger<MedicService> logger,
             IValidationBehavior<RegisterMedicRequest> validationBehavior)
         {
             _authenticationService = authenticationService;
+            _contextAccessor = contextAccessor;
             _logger = logger;
             _validationBehavior = validationBehavior;
+        }
+
+        public int GetCurrentMedicId()
+        {
+            var claim = _contextAccessor.HttpContext?.User.Claims
+                .FirstOrDefault(c => c.Type == "medicId");
+
+            if (claim == null)
+            {
+                throw new InvalidOperationException("Medic ID claim not found.");
+            }
+
+            if (!int.TryParse(claim.Value, out var medicId))
+            {
+                throw new InvalidOperationException("Invalid Medic ID format.");
+            }
+
+            return medicId;
         }
 
         public async Task<ServiceResponse<RegisterResponse>> RegisterMedicUser(RegisterMedicRequest request)
