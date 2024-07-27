@@ -33,6 +33,7 @@ namespace Infrastructure.Data
         public DbSet<Specialty> Specialties { get; set; }
         public DbSet<Treatment> Treatments { get; set; }
         public DbSet<Pathology> Pathologies { get; set; }
+        public DbSet<PatientPathology> PatientPathologies { get; set; }
         public DbSet<MedRecord> MedRecords { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
         public DbSet<MedDosage> MedDosages { get; set; }

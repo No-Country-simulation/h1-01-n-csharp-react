@@ -75,5 +75,15 @@ namespace API.Controllers
 
             return Ok(await _medicPatientService.AddRelationshipWithPatient(medicId, patientEmail));
         }
+
+        [Authorize(Roles = "Medic")]
+        [HttpGet("GetMedicPatients/{patientEmail}")]
+        public async Task<ActionResult<ServiceResponse<bool>>> GetMedicPatients()
+        {
+            var medicId = await GetCurrentMedicUserId();
+
+            return null;
+            //return Ok(await _medicPatientService.AddRelationshipWithPatient(medicId, patientEmail));
+        }
     }
 }
