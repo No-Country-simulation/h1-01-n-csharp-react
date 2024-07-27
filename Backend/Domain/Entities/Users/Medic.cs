@@ -22,7 +22,6 @@ namespace Domain.Entities.Users
         public int SpecialtyId { get; set; }
         public Healthcare? Healthcare { get; set; }
         public int? HealthcareId { get; set; }
-        public List<Patient> Patients { get; set; }
         public List<Appointment> Appointments { get; set; }
         public List<MedicPatient> MedicPatients { get; set; }
     }

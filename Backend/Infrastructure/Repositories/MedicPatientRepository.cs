@@ -1,6 +1,7 @@
 ﻿using Domain.Entities.Users;
 using Infrastructure.Data;
 using Infrastructure.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,15 @@ namespace Infrastructure.Repositories
         public MedicPatientRepository(ApplicationDbContext context) : base(context)
         {
             _context = context;
+        }
+
+        public async Task<MedicPatient> FindRelationship(int medicId, int patientId)
+        {
+            var relationship = await Entities
+                .Where(r => r.MedicId == medicId && r.PatientId == patientId)
+                .FirstOrDefaultAsync();
+
+            return relationship;
         }
     }
 }

@@ -68,12 +68,12 @@ namespace API.Controllers
         }
 
         [Authorize(Roles = "Medic")]
-        [HttpPost("AddRelationshipWithPatient/{patientId}")]
-        public async Task<ActionResult<ServiceResponse<bool>>> AddRelationshipWithPatient(int patientId)
+        [HttpPost("AddRelationshipWithPatient/{patientEmail}")]
+        public async Task<ActionResult<ServiceResponse<bool>>> AddRelationshipWithPatient(string patientEmail)
         {
             var medicId = await GetCurrentMedicUserId();
 
-            return Ok(await _medicPatientService.AddRelationshipWithPatient(medicId, patientId));
+            return Ok(await _medicPatientService.AddRelationshipWithPatient(medicId, patientEmail));
         }
     }
 }

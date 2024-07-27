@@ -9,6 +9,6 @@ namespace Core.Services.Interfaces
 {
     public interface IMedicPatientService
     {
-        Task<ServiceResponse<bool>> AddRelationshipWithPatient(int medicId, int patientId);
+        Task<ServiceResponse<bool>> AddRelationshipWithPatient(int medicId, string patientEmail);
     }
 }

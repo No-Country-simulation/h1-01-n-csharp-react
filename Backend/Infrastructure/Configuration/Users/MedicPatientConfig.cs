@@ -13,6 +13,7 @@ namespace Infrastructure.Configuration.Users
     {
         public void Configure(EntityTypeBuilder<MedicPatient> builder)
         {
+
             builder.HasKey(mp => new { mp.MedicId, mp.PatientId });
 
             builder.Ignore(mp => mp.Id);

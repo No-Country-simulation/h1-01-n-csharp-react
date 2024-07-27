@@ -28,7 +28,6 @@ namespace Domain.Entities.Users
         public Pathology? Pathology { get; set; }
         public int? PathologyId { get; set; }
         public List<Treatment> Treatments { get; set; }
-        public List<Medic> Medics { get; set; }
         public List<Appointment> Appointments { get; set; }
         public List<MedicPatient> MedicPatients { get; set; }
 

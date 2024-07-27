@@ -84,11 +84,11 @@ namespace Core.Services
 
             //Verify if an account is already using the DNI received
             var existingDNI = await _userRepository.IsDNIInUse(request.DNI);
-            if (existingDNI) throw new Exception("DNI already in use.");
+            if (existingDNI) throw new Exception("El DNI ingresado ya esta en uso.");
 
             //Verify if an account is already using the License received
             var existingLicense = await _medicRepository.FindLicenseInMedics(request.License);
-            if (existingLicense) throw new Exception("License already in use.");
+            if (existingLicense) throw new Exception("La licencia médica ingresada ya esta en uso.");
 
             if (existingEmail == null)
             {
@@ -142,7 +142,7 @@ namespace Core.Services
 
             //Verify if an account is already using the DNI received
             var existingDNI = await _userRepository.IsDNIInUse(request.DNI);
-            if (existingDNI) throw new Exception("DNI already in use.");
+            if (existingDNI) throw new Exception("El DNI ingresado ya esta en uso.");
 
             if (existingEmail == null)
             {

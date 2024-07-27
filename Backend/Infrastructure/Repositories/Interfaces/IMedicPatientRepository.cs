@@ -9,5 +9,6 @@ namespace Infrastructure.Repositories.Interfaces
 {
     public interface IMedicPatientRepository : IGenericRepository<MedicPatient, int>
     {
+        Task<MedicPatient> FindRelationship(int medicId, int patientId);
     }
 }
