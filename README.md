@@ -21,7 +21,7 @@
 
 ## Tecnologías y Herramientas </b>
 
-<h3 align="center"><strong>Front-End:</strong></h3>
+<h3 align="center"><strong>Frontend:</strong></h3>
 
 <div align="center">
   <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React" style="margin: 0 10px;">
@@ -31,7 +31,7 @@
   <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" style="margin: 0 10px;">
 </div>
 
-<h3 align="center"><strong>Back-End:</strong></h3>
+<h3 align="center"><strong>Backend:</strong></h3>
 
 <div align="center">
 
@@ -44,6 +44,10 @@
 </div>
 
 <h3 align="center"><strong>Testing:</strong></h3>
+<div align="center">
+	<img src='https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white' alt=''>
+	<img src="https://img.shields.io/badge/-Postman-%23F24E1E.svg?style=for-the-badge&logo=postman&logoColor=white" alt="Postman Badge">
+</div>
 
 <h3 align="center"><strong>Diseño:</strong></h3>
 
@@ -66,35 +70,81 @@
   <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" style="margin: 0 10px;">
 </div>
 
-##  Integrantes del Equipo</b>
+<br>
+
+##  Equipo de Desarrollo</b>
+<br>
+<br>
 
 <table>
   <tr>
-    <td align="center">
-      <b>Frontend:</b><br>
-      <img src="https://avatars.githubusercontent.com/u/72477825?v=4" width="90" alt="Mateo Rosero"/>
-      <br>
-      <sub><b>Mateo Rosero</b></sub>
-    </td>
-    <td align="center">
-      <b>Backend:</b><br>
-      <img src="https://avatars.githubusercontent.com/u/145474462?v=4" width="90" alt="Juan Colapaolo"/>
-      <br>
-      <sub><b>Juan Colapaolo</b></sub>
-    </td>
+    <th>Frontend</th>
+    <th>Backend</th>
   </tr>
   <tr>
     <td align="center">
-      <b>QA Tester:</b><br>
-      <img src="https://avatars.githubusercontent.com/u/130188881?v=4" width="90" alt="Thamairy Gonzalez"/>
+      <div align="center">
+	<img src="https://avatars.githubusercontent.com/u/72477825?v=4" width="120" alt="Mateo Rosero"/>    
+      </div>
+      <b>Mateo Rosero</b>
       <br>
-      <sub><b>Thamairy Gonzalez</b></sub>
+      <br>
+      <a href="https://www.linkedin.com/in/mateok13/" target="_blank">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge">
+      </a>
+      <a href="https://github.com/mateok13" target="_blank">
+        <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge">
+      </a>
     </td>
     <td align="center">
-      <b>UX/UI Designer:</b><br>
-      <img src="https://avatars.githubusercontent.com/u/115470786?v=4" width="90" alt="Oscar Araujo"/>
+      <div align="center">
+	<img src="https://avatars.githubusercontent.com/u/145474462?v=4" width="120" alt="Juan Colapaolo"/>    
+      </div>
+      <b>Juan Colapaolo</b>
       <br>
-      <sub><b>Oscar Araujo</b></sub>
+      <br>
+      <a href="https://www.linkedin.com/in/juan-ignacio-colapaolo/" target="_blank">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge">
+      </a>
+      <a href="https://github.com/jigcolapaolo" target="_blank">
+        <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge">
+      </a>
+    </td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th>QA Tester</th>
+    <th>UX/UI Designer</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <div align="center">
+	<img src="https://avatars.githubusercontent.com/u/130188881?v=4" width="120" alt="Thamairy Gonzalez"/>    
+      </div>
+      <b>Thamairy Gonzalez</b>
+      <br>
+      <br>
+      <a href="https://www.linkedin.com/in/thamairy-gonzalez/" target="_blank">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge">
+      </a>
+      <a href="https://github.com/ThamairyGonzalez" target="_blank">
+        <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge">
+      </a>
+    </td>
+    <td align="center">
+      <div align="center">
+	<img src="https://github.com/user-attachments/assets/391e0265-d831-45e1-86f5-124813bb4390" width="120" alt="Oscar Araujo"/>    
+      </div>
+      <b>Oscar Araujo</b>
+      <br>
+      <br>
+      <a href="https://www.linkedin.com/in/oscar-araujogarcia/" target="_blank">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge">
+      </a>
+      <a href="https://github.com/OskrAraujo" target="_blank">
+        <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Badge">
+      </a>
     </td>
   </tr>
 </table>
