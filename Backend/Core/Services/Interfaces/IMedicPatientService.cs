@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace Core.Services.Interfaces
 {
     public interface IMedicPatientService
     {
+        Task<ServiceResponse<bool>> AddRelationshipWithPatient(int medicId, int patientId);
     }
 }

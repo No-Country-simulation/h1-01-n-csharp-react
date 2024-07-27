@@ -167,15 +167,8 @@ namespace Core.Services
 
             IEnumerable<Claim> claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim("userId", user.Id.ToString()),
-                new Claim("adminId", user.AdminId.ToString()),
-                new Claim("medicId", user.MedicId.ToString()),
-                new Claim("patientId", user.PatientId.ToString()),
-                new Claim("healthcareId", user.HealthcareId.ToString()),
-                new Claim("labId", user.LabId.ToString()),
-                new Claim("govEntId", user.GovEntId.ToString()),
-         }
+                new Claim("id", user.Id.ToString()),
+            }
             .Union(userClaims)
             .Union(roleClaims);
 
@@ -186,7 +179,7 @@ namespace Core.Services
                 issuer: _configuration["JwtSettings:Issuer"],
                 audience: _configuration["JwtSettings:Audience"],
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(int.Parse(_configuration["JwtSettings:DurationInMinutes"])),
+                expires: DateTime.UtcNow.AddDays(int.Parse(_configuration["JwtSettings:DurationInDays"])),
                 signingCredentials: signingCredentials);
 
             return jwtSecurityToken;

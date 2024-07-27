@@ -1,8 +1,10 @@
 ﻿using Core.Services.Interfaces;
+using Domain.Entities.Users;
 using DTOs;
 using DTOs.Patient;
 using DTOs.Register;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -13,13 +15,43 @@ namespace API.Controllers
     {
         private readonly IMedicService _medicService;
         private readonly IPatientService _patientService;
+        private readonly IMedicPatientService _medicPatientService;
+        private readonly UserManager<ApplicationUser> _userManager;
 
         public MedicController(
             IMedicService medicService,
-            IPatientService patientService)
+            IPatientService patientService,
+            IMedicPatientService medicPatientService,
+            UserManager<ApplicationUser> userManager)
         {
             _medicService = medicService;
             _patientService = patientService;
+            _medicPatientService = medicPatientService;
+            _userManager = userManager;
+        }
+
+        private async Task<int> GetCurrentMedicUserId()
+        {
+            var claim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == "id");
+            if (claim != null)
+            {
+                var user = await _userManager.FindByIdAsync(claim.Value);
+
+                if (user.MedicId.HasValue)
+                {
+
+                    return user.MedicId.Value;
+                } 
+                else
+                {
+                    throw new Exception("El Usuario actual no es Médico.");
+                }
+
+            }
+            else
+            {
+                throw new Exception("El Claim no es válido.");
+            }
         }
 
         [HttpPost("RegisterMedicUser")]
@@ -33,6 +65,15 @@ namespace API.Controllers
         public async Task<ActionResult<ServiceResponse<List<PatientEmailGetDto>>>> GetPatientsEmail(string email)
         {
             return Ok(await _patientService.GetPatientsEmail(email));
+        }
+
+        [Authorize(Roles = "Medic")]
+        [HttpPost("AddRelationshipWithPatient/{patientId}")]
+        public async Task<ActionResult<ServiceResponse<bool>>> AddRelationshipWithPatient(int patientId)
+        {
+            var medicId = await GetCurrentMedicUserId();
+
+            return Ok(await _medicPatientService.AddRelationshipWithPatient(medicId, patientId));
         }
     }
 }

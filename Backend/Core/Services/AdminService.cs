@@ -95,9 +95,9 @@ namespace Core.Services
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<DeleteResponse>> SoftDeleteUser(string email)
+        public async Task<ServiceResponse<bool>> SoftDeleteUser(string email)
         {
-            var serviceResponse = new ServiceResponse<DeleteResponse>();
+            var serviceResponse = new ServiceResponse<bool>();
 
             try
             {
@@ -123,9 +123,9 @@ namespace Core.Services
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<DeleteResponse>> HardDeleteUser(int id)
+        public async Task<ServiceResponse<bool>> HardDeleteUser(int id)
         {
-            var serviceResponse = new ServiceResponse<DeleteResponse>();
+            var serviceResponse = new ServiceResponse<bool>();
 
             try
             {
@@ -148,9 +148,9 @@ namespace Core.Services
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<object>> RestoreDeletedUser(int id)
+        public async Task<ServiceResponse<bool>> RestoreDeletedUser(int id)
         {
-            var serviceResponse = new ServiceResponse<object>();
+            var serviceResponse = new ServiceResponse<bool>();
 
             try
             {

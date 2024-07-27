@@ -1,4 +1,5 @@
 ﻿using Core.Services.Interfaces;
+using DTOs;
 using Infrastructure.Repositories.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
@@ -20,6 +21,11 @@ namespace Core.Services
         {
             _logger = logger;
             _medicPatientRepository = medicPatientRepository;
+        }
+
+        public async Task<ServiceResponse<bool>> AddRelationshipWithPatient(int medicId, int patientId)
+        {
+            return null;
         }
     }
 }

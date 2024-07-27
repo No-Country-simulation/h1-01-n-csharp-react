@@ -42,13 +42,13 @@ namespace API.Controllers
         }
 
         [HttpDelete("SoftDeleteUser/{email}")]
-        public async Task<ActionResult<ServiceResponse<DeleteResponse>>> SoftDeleteUser(string email)
+        public async Task<ActionResult<ServiceResponse<bool>>> SoftDeleteUser(string email)
         {
             return Ok(await _adminService.SoftDeleteUser(email));
         }
 
         [HttpDelete("HardDeleteUser/{id}")]
-        public async Task<ActionResult<ServiceResponse<DeleteResponse>>> HardDeleteUser(int id)
+        public async Task<ActionResult<ServiceResponse<bool>>> HardDeleteUser(int id)
         {
             return Ok(await _adminService.HardDeleteUser(id));
         }
