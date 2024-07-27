@@ -36,8 +36,14 @@ namespace Infrastructure.Repositories
 
         public async Task<bool> FindDNIInMedics(string DNI)
         {
-            return await _context.Medics
-                .AnyAsync(medic => medic.DNI == DNI && !medic.ApplicationUser.IsDeleted);
+            return await Entities
+                .AnyAsync(medic => medic.DNI == DNI);
+        }
+        
+        public async Task<bool> FindLicenseInMedics(string License)
+        {
+            return await Entities
+                .AnyAsync(medic => medic.License == License);
         }
     }
 }

@@ -46,8 +46,8 @@ namespace Infrastructure.Repositories
 
         public async Task<bool> FindDNIInPatients(string DNI)
         {
-            return await _context.Patients
-                .AnyAsync(patient => patient.DNI == DNI && !patient.ApplicationUser.IsDeleted);
+            return await Entities
+                .AnyAsync(patient => patient.DNI == DNI);
         }
     }
 }

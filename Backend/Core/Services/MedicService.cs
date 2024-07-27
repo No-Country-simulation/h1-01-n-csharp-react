@@ -31,24 +31,6 @@ namespace Core.Services
             _validationBehavior = validationBehavior;
         }
 
-        public int GetCurrentMedicId()
-        {
-            var claim = _contextAccessor.HttpContext?.User.Claims
-                .FirstOrDefault(c => c.Type == "medicId");
-
-            if (claim == null)
-            {
-                throw new InvalidOperationException("Medic ID claim not found.");
-            }
-
-            if (!int.TryParse(claim.Value, out var medicId))
-            {
-                throw new InvalidOperationException("Invalid Medic ID format.");
-            }
-
-            return medicId;
-        }
-
         public async Task<ServiceResponse<RegisterResponse>> RegisterMedicUser(RegisterMedicRequest request)
         {
             var serviceResponse = new ServiceResponse<RegisterResponse>();

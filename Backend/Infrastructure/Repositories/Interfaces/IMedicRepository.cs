@@ -12,5 +12,6 @@ namespace Infrastructure.Repositories.Interfaces
     {
         Task<List<MedicGetDto>> GetAllMedicUsersWithSpecialties();
         Task<bool> FindDNIInMedics(string DNI);
+        Task<bool> FindLicenseInMedics(string License);
     }
 }

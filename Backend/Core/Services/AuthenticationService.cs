@@ -23,19 +23,22 @@ namespace Core.Services
         private readonly RoleManager<ApplicationRole> _roleManager;
         private readonly IConfiguration _configuration;
         private readonly IUserRepository _userRepository;
+        private readonly IMedicRepository _medicRepository;
 
         public AuthenticationService(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             RoleManager<ApplicationRole> roleManager,
             IConfiguration configuration,
-            IUserRepository userRepository)
+            IUserRepository userRepository,
+            IMedicRepository medicRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _configuration = configuration;
             _userRepository = userRepository;
+            _medicRepository = medicRepository;
         }
 
         public async Task<AuthenticationResponse> AuthenticateAsync(AuthenticationRequest request)
@@ -82,6 +85,10 @@ namespace Core.Services
             //Verify if an account is already using the DNI received
             var existingDNI = await _userRepository.IsDNIInUse(request.DNI);
             if (existingDNI) throw new Exception("DNI already in use.");
+
+            //Verify if an account is already using the License received
+            var existingLicense = await _medicRepository.FindLicenseInMedics(request.License);
+            if (existingLicense) throw new Exception("License already in use.");
 
             if (existingEmail == null)
             {
