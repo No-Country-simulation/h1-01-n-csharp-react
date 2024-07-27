@@ -133,7 +133,25 @@ namespace Core.Services
                 if (user == null || !user.IsDeleted)
                     throw new KeyNotFoundException($"Usuario no encontrado o no marcado para eliminar.");
 
-                _userRepository.Delete(user);
+
+                switch (user)
+                {
+                    case { MedicId: not null }:
+                        var medicId = user.MedicId.Value;
+                        _userRepository.Delete(user);
+                        await _medicRepository.Delete(medicId); 
+                        break;
+
+                    case { PatientId: not null }:
+                        var patientId = user.PatientId.Value;
+                        _userRepository.Delete(user);
+                        await _patientRepository.Delete(patientId);
+                        break;
+
+                    default:
+                        throw new InvalidOperationException("El usuario no tiene un MedicId o PatientId asignado.");
+                }
+
                 await _userRepository.SaveChangesAsync();
 
                 serviceResponse.Message = $"Usuario eliminado definitivamente.";
