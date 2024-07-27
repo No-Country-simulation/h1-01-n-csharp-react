@@ -2,6 +2,7 @@
 using Domain.Entities.Users;
 using DTOs.Auth;
 using DTOs.Register;
+using Infrastructure.Repositories.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -21,17 +22,20 @@ namespace Core.Services
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
         private readonly IConfiguration _configuration;
+        private readonly IUserRepository _userRepository;
 
         public AuthenticationService(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             RoleManager<ApplicationRole> roleManager,
-            IConfiguration configuration)
+            IConfiguration configuration,
+            IUserRepository userRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _configuration = configuration;
+            _userRepository = userRepository;
         }
 
         public async Task<AuthenticationResponse> AuthenticateAsync(AuthenticationRequest request)
@@ -74,6 +78,10 @@ namespace Core.Services
             };
 
             var existingEmail = await _userManager.FindByEmailAsync(request.Email);
+
+            //Verify if an account is already using the DNI received
+            var existingDNI = await _userRepository.IsDNIInUse(request.DNI);
+            if (existingDNI) throw new Exception("DNI already in use.");
 
             if (existingEmail == null)
             {
@@ -124,6 +132,10 @@ namespace Core.Services
             };
 
             var existingEmail = await _userManager.FindByEmailAsync(request.Email);
+
+            //Verify if an account is already using the DNI received
+            var existingDNI = await _userRepository.IsDNIInUse(request.DNI);
+            if (existingDNI) throw new Exception("DNI already in use.");
 
             if (existingEmail == null)
             {
