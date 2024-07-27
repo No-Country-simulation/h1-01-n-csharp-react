@@ -49,5 +49,19 @@ namespace Infrastructure.Repositories
             return await Entities
                 .AnyAsync(patient => patient.DNI == DNI);
         }
+
+        public async Task<List<MedicPatientsGetDto>> GetMedicPatientsWithPathologies(int medicId)
+        {
+            var patients = await Entities
+                .Include(p => p.ApplicationUser)
+                .Include(p => p.PatientPathologies)
+                    .ThenInclude(pp => pp.Pathology)
+                .Where(p => p.MedicPatients.Any(mp => mp.MedicId == medicId) && !p.ApplicationUser.IsDeleted)
+                .ToListAsync();
+
+            var patientDtos = _mapper.Map<List<MedicPatientsGetDto>>(patients);
+
+            return patientDtos;
+        }
     }
 }

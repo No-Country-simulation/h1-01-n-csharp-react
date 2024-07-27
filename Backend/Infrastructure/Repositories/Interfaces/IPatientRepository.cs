@@ -13,5 +13,6 @@ namespace Infrastructure.Repositories.Interfaces
         Task<List<PatientGetDto>> GetAllPatientUsers();
         Task<List<PatientEmailGetDto>> GetPatientsEmail(string email);
         Task<bool> FindDNIInPatients(string DNI);
+        Task<List<MedicPatientsGetDto>> GetMedicPatientsWithPathologies(int medicId);
     }
 }

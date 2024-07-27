@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTOs.Pathology;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,9 @@ namespace DTOs.Patient
         public string LastName { get; set; } = string.Empty;
         public string DNI { get; set; } = string.Empty;
         public DateTime BirthDate { get; set; }
-        public bool IsManagedByParent { get; set; } = false;
         public string ParentName { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
         public string BloodType { get; set; }
-        public string Email { get; set; } = string.Empty;
+        public List<PathologyNameGetDto> Pathologies { get; set; } = new List<PathologyNameGetDto>();
     }
 }

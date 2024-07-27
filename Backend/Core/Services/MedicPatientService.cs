@@ -2,6 +2,7 @@
 using Core.Services.Interfaces;
 using Domain.Entities.Users;
 using DTOs;
+using DTOs.Patient;
 using DTOs.Register;
 using Infrastructure.Repositories;
 using Infrastructure.Repositories.Interfaces;
@@ -19,16 +20,19 @@ namespace Core.Services
     {
         private readonly ILogger<MedicPatientService> _logger;
         private readonly IMedicPatientRepository _medicPatientRepository;
+        private readonly IPatientRepository _patientRepository;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public MedicPatientService(
             ILogger<MedicPatientService> logger,
             IMedicPatientRepository medicPatientRepository,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            IPatientRepository patientRepository)
         {
             _logger = logger;
             _medicPatientRepository = medicPatientRepository;
             _userManager = userManager;
+            _patientRepository = patientRepository;
         }
 
         public async Task<ServiceResponse<bool>> AddRelationshipWithPatient(int medicId, string patientEmail)
@@ -64,6 +68,24 @@ namespace Core.Services
                 serviceResponse.Success = false;
                 serviceResponse.Message = ex.Message;
                 _logger.LogError(ex, $"Error al agregar nueva relación con Paciente - {ex.Message}");
+            }
+
+            return serviceResponse;
+        }
+
+        public async Task<ServiceResponse<List<MedicPatientsGetDto>>> GetMedicPatients(int id)
+        {
+            var serviceResponse = new ServiceResponse<List<MedicPatientsGetDto>>();
+
+            try
+            {
+                serviceResponse.Data = await _patientRepository.GetMedicPatientsWithPathologies(id);
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+                _logger.LogError(ex, $"Error al obtener Pacientes - {ex.Message}");
             }
 
             return serviceResponse;
