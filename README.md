@@ -114,7 +114,7 @@
 </table>
 <table>
   <tr>
-    <th>Automation Tester QA/Project Manager</th>
+    <th>Automation Tester QA & PM</th>
     <th>UX/UI Designer</th>
   </tr>
   <tr>
