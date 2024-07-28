@@ -77,6 +77,15 @@ namespace API.Controllers
         }
 
         [Authorize(Roles = "Medic")]
+        [HttpDelete("DeleteRelationshipWithPatient/{patientEmail}")]
+        public async Task<ActionResult<ServiceResponse<bool>>> DeleteRelationshipWithPatient(string patientEmail)
+        {
+            var medicId = await GetCurrentMedicUserId();
+
+            return Ok(await _medicPatientService.DeleteRelationshipWithPatient(medicId, patientEmail));
+        }
+
+        [Authorize(Roles = "Medic")]
         [HttpGet("GetMedicPatients")]
         public async Task<ActionResult<ServiceResponse<List<MedicPatientsGetDto>>>> GetMedicPatients()
         {
@@ -84,5 +93,6 @@ namespace API.Controllers
 
             return Ok(await _medicPatientService.GetMedicPatients(medicId));
         }
+
     }
 }

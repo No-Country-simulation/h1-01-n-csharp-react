@@ -77,6 +77,39 @@ namespace Core.Services
             return serviceResponse;
         }
 
+        public async Task<ServiceResponse<bool>> DeleteRelationshipWithPatient(int medicId, string patientEmail)
+        {
+            var serviceResponse = new ServiceResponse<bool>();
+
+            try
+            {
+
+                var user = await _userManager.FindByEmailAsync(patientEmail);
+                if (user == null || user.PatientId == null)
+                {
+                    throw new KeyNotFoundException("Usuario no encontrado o no es un paciente.");
+                }
+
+                var existingRelationship = await _medicPatientRepository.FindRelationship(medicId, user.PatientId.Value);
+                if (existingRelationship == null) throw new Exception("No existe una relación con este usuario.");
+
+
+                _medicPatientRepository.Delete(existingRelationship);
+                await _medicPatientRepository.SaveChangesAsync();
+
+                serviceResponse.Data = true;
+                serviceResponse.Message = "Relación entre médico y paciente eliminada con éxito.";
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+                _logger.LogError(ex, $"Error al eliminar relación con Paciente - {ex.Message}");
+            }
+
+            return serviceResponse;
+        }
+
         public async Task<ServiceResponse<List<MedicPatientsGetDto>>> GetMedicPatients(int id)
         {
             var serviceResponse = new ServiceResponse<List<MedicPatientsGetDto>>();
