@@ -1,4 +1,5 @@
 ﻿using DTOs;
+using DTOs.Medic;
 using DTOs.Patient;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,6 @@ namespace Core.Services.Interfaces
     {
         Task<ServiceResponse<bool>> AddRelationshipWithPatient(int medicId, string patientEmail);
         Task<ServiceResponse<List<MedicPatientsGetDto>>> GetMedicPatients(int id);
+        Task<ServiceResponse<List<PatientMedicsGetDto>>> GetPatientMedics(int id);
     }
 }

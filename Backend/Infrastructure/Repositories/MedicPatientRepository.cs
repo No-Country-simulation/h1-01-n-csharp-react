@@ -1,4 +1,5 @@
 ﻿using Domain.Entities.Users;
+using DTOs.Patient;
 using Infrastructure.Data;
 using Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;

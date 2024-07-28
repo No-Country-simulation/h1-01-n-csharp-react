@@ -2,6 +2,7 @@
 using Core.Services.Interfaces;
 using Domain.Entities.Users;
 using DTOs;
+using DTOs.Medic;
 using DTOs.Patient;
 using DTOs.Register;
 using Infrastructure.Repositories;
@@ -21,18 +22,21 @@ namespace Core.Services
         private readonly ILogger<MedicPatientService> _logger;
         private readonly IMedicPatientRepository _medicPatientRepository;
         private readonly IPatientRepository _patientRepository;
+        private readonly IMedicRepository _medicRepository;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public MedicPatientService(
             ILogger<MedicPatientService> logger,
             IMedicPatientRepository medicPatientRepository,
             UserManager<ApplicationUser> userManager,
-            IPatientRepository patientRepository)
+            IPatientRepository patientRepository,
+            IMedicRepository medicRepository)
         {
             _logger = logger;
             _medicPatientRepository = medicPatientRepository;
             _userManager = userManager;
             _patientRepository = patientRepository;
+            _medicRepository = medicRepository;
         }
 
         public async Task<ServiceResponse<bool>> AddRelationshipWithPatient(int medicId, string patientEmail)
@@ -86,6 +90,24 @@ namespace Core.Services
                 serviceResponse.Success = false;
                 serviceResponse.Message = ex.Message;
                 _logger.LogError(ex, $"Error al obtener Pacientes - {ex.Message}");
+            }
+
+            return serviceResponse;
+        }
+
+        public async Task<ServiceResponse<List<PatientMedicsGetDto>>> GetPatientMedics(int id)
+        {
+            var serviceResponse = new ServiceResponse<List<PatientMedicsGetDto>>();
+
+            try
+            {
+                serviceResponse.Data = await _medicRepository.GetPatientMedics(id);
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+                _logger.LogError(ex, $"Error al obtener Médicos - {ex.Message}");
             }
 
             return serviceResponse;

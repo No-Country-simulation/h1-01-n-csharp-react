@@ -2,6 +2,7 @@
 using AutoMapper.QueryableExtensions;
 using Domain.Entities.Users;
 using DTOs.Medic;
+using DTOs.Patient;
 using Infrastructure.Data;
 using Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -44,6 +45,19 @@ namespace Infrastructure.Repositories
         {
             return await Entities
                 .AnyAsync(medic => medic.License == License);
+        }
+
+        public async Task<List<PatientMedicsGetDto>> GetPatientMedics(int patientId)
+        {
+            var medics = await Entities
+                .Include(p => p.ApplicationUser)
+                .Include(p => p.Specialty)
+                .Where(p => p.MedicPatients.Any(mp => mp.PatientId == patientId) && !p.ApplicationUser.IsDeleted)
+                .ToListAsync();
+
+            var medicDtos = _mapper.Map<List<PatientMedicsGetDto>>(medics);
+
+            return medicDtos;
         }
     }
 }
