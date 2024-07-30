@@ -19,11 +19,11 @@ function FormRegister({ onFieldFilled }) {
 
   const handleFocus = (field) => {
     setFocusedField(field)
-  };
+  }
 
   const handleStep = (step) => {
     setFocusedStep(step)
-  };
+  }
 
   const [specialties, setSpecialties] = useState([])
 
@@ -35,7 +35,7 @@ function FormRegister({ onFieldFilled }) {
       } catch (error) {
         console.error('Error fetching specialties:', error)
       }
-    };
+    }
 
     fetchSpecialties()
   }, [])

@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import LoginForm from '../../components/FormLogin/index'
 import images from '../../assets/images/images'
-import style from './LoginMedico.module.css'
+import style from './Login.module.css'
 
 function Login() {
   const location = useLocation()
@@ -12,14 +12,14 @@ function Login() {
   return (
     <div className="container">
       <div className={style.backgroundLogin}>
-        {userType === 'medico' ? (
+        {userType === 'Medic' ? (
           <img className={style.imageLogin} src={images.ImageLoginMedico} alt="Medico" />
         ) : (
           <img className={style.imageLogin} src={images.ImageLoginPaciente} alt="Paciente" />
         )}
       </div>
       <div className={style.containerFormLoginMedico}>
-        <LoginForm />
+        <LoginForm userType={userType}/>
       </div>
     </div>
   );
