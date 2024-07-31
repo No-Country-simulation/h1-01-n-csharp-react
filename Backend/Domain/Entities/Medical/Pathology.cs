@@ -13,7 +13,12 @@ namespace Domain.Entities.Medical
         public string Name { get; set; }
         public string Description { get; set; } = string.Empty;
 
-        public List<PatientPathology> PatientPathologies { get; set; }
+        public PathologyCategory PathologyCategory { get; set; }
+        public int PathologyCategoryId { get; set; }
+        public List<MedRecordPathology> MedRecordPathologies { get; set; }
         public List<Treatment> Treatments { get; set; }
+        public List<ClinicalHistory> ClinicalHistories { get; set; }
+        public List<FamilyHistoryPathology> FamilyHistoryPathologies { get; set; }
+
     }
 }

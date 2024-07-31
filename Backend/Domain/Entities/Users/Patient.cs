@@ -25,10 +25,6 @@ namespace Domain.Entities.Users
         public int? MedRecordId { get; set; }
         public Healthcare? Healthcare { get; set; }
         public int? HealthcareId { get; set; }
-        public Pathology? Pathology { get; set; }
-        public int? PathologyId { get; set; }
-        public List<PatientPathology> PatientPathologies { get; set; }
-        public List<Appointment> Appointments { get; set; }
         public List<MedicPatient> MedicPatients { get; set; }
 
         //Transplant

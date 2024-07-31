@@ -110,23 +110,23 @@ namespace Core.Services
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<MedicPatientsGetDto>>> GetMedicPatients(int id)
-        {
-            var serviceResponse = new ServiceResponse<List<MedicPatientsGetDto>>();
+        //public async Task<ServiceResponse<List<MedicPatientsGetDto>>> GetMedicPatients(int id)
+        //{
+        //    var serviceResponse = new ServiceResponse<List<MedicPatientsGetDto>>();
 
-            try
-            {
-                serviceResponse.Data = await _patientRepository.GetMedicPatientsWithPathologies(id);
-            }
-            catch (Exception ex)
-            {
-                serviceResponse.Success = false;
-                serviceResponse.Message = ex.Message;
-                _logger.LogError(ex, $"Error al obtener Pacientes - {ex.Message}");
-            }
+        //    try
+        //    {
+        //        serviceResponse.Data = await _patientRepository.GetMedicPatientsWithPathologies(id);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        serviceResponse.Success = false;
+        //        serviceResponse.Message = ex.Message;
+        //        _logger.LogError(ex, $"Error al obtener Pacientes - {ex.Message}");
+        //    }
 
-            return serviceResponse;
-        }
+        //    return serviceResponse;
+        //}
 
         public async Task<ServiceResponse<List<PatientMedicsGetDto>>> GetPatientMedics(int id)
         {

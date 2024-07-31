@@ -11,7 +11,7 @@ namespace Domain.Entities.Medical
         public string DocSrc { get; set; }
         public string Description { get; set; } = string.Empty;
 
-        public MedRecord MedRecord { get; set; }
-        public int MedRecordId { get; set; }
+        public Treatment Treatment { get; set; }
+        public int TreatmentId { get; set; }
     }
 }

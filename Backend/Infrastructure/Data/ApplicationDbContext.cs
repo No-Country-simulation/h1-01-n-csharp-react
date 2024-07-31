@@ -20,7 +20,7 @@ namespace Infrastructure.Data
 
         }
 
-        //Users
+        #region Users
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Medic> Medics { get; set; }
         public DbSet<Patient> Patients { get; set; }
@@ -28,22 +28,35 @@ namespace Infrastructure.Data
         public DbSet<Lab> Labs { get; set; }
         public DbSet<GovEnt> GovEnts { get; set; }
         public DbSet<MedicPatient> MedicPatients { get; set; }
-        //Medical
+        #endregion
+
+        #region Medical
+        public DbSet<Allergy> Allergies { get; set; }
+        public DbSet<AllergyCategory> AllergyCategories { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
-        public DbSet<Specialty> Specialties { get; set; }
-        public DbSet<Treatment> Treatments { get; set; }
-        public DbSet<Pathology> Pathologies { get; set; }
-        public DbSet<PatientPathology> PatientPathologies { get; set; }
-        public DbSet<MedRecord> MedRecords { get; set; }
-        public DbSet<Medicine> Medicines { get; set; }
-        public DbSet<MedDosage> MedDosages { get; set; }
-        public DbSet<MedCheck> MedChecks { get; set; }
+        public DbSet<ClinicalHistory> ClinicalHistories { get; set; }
         public DbSet<Document> Documents { get; set; }
-        //Transplant
+        public DbSet<FamilyHistory> FamilyHistories { get; set; }
+        public DbSet<FamilyHistoryPathology> FamilyHistoryPathologies { get; set; }
+        public DbSet<MedDosage> MedDosages { get; set; }
+        public DbSet<Medicine> Medicines { get; set; }
+        public DbSet<MedRecord> MedRecords { get; set; }
+        public DbSet<MedRecordAllergy> MedRecordAllergies { get; set; }
+        public DbSet<MedRecordPathology> MedRecordPathologies { get; set; }
+        public DbSet<Pathology> Pathologies { get; set; }
+        public DbSet<PathologyCategory> PathologyCategories { get; set; }
+        public DbSet<Specialty> Specialties { get; set; }
+        public DbSet<SurgeryType> SurgeryTypes { get; set; }
+        public DbSet<SurgicalHistory> SurgicalHistories { get; set; }
+        public DbSet<Treatment> Treatments { get; set; }
+        #endregion
+
+        #region Transplant
         public DbSet<Donor> Donors { get; set; }
         public DbSet<Recipient> Recipients { get; set; }
         public DbSet<Organ> Organs { get; set; }
         public DbSet<Transplant> Transplants { get; set; }
+        #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

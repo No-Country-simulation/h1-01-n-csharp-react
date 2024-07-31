@@ -9,13 +9,14 @@ namespace Domain.Entities.Medical
 {
     public class Appointment : BaseEntity<int>
     {
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime Date { get; set; }
+        public DateTime Hour { get; set; }
+        public bool IsActive { get; set; }
 
         public Medic Medic { get; set; }
         public int MedicId { get; set; }
-        public Patient Patient { get; set; }
-        public int PatientId { get; set; }
+        public MedRecord MedRecord { get; set; }
+        public int MedRecordId { get; set; }
     }
 
     public enum AppointmentType
