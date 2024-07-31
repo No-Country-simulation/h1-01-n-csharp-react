@@ -11,5 +11,6 @@ namespace Infrastructure.Repositories.Interfaces
     public interface IPathologyRepository : IGenericRepository<Pathology, int>
     {
         Task<List<PathologyGetDto>> GetAllPathologies();
+        Task<List<PathologyCategoriesGetDto>> GetAllPathologyCategories();
     }
 }

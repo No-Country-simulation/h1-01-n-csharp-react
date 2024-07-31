@@ -15,6 +15,8 @@ namespace Mappings.Profiles
         {
             CreateMap<Pathology, PathologyGetDto>()
                 .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.PathologyCategory.Name));
+
+            CreateMap<PathologyCategory, PathologyCategoriesGetDto>();
         }
     }
 }

@@ -22,5 +22,11 @@ namespace API.Controllers
         {
             return Ok(await _pathologyService.GetAllPathologies());
         }
+
+        [HttpGet("GetAllPathologyCategories")]
+        public async Task<ActionResult<ServiceResponse<List<PathologyCategoriesGetDto>>>> GetAllPathologyCategories()
+        {
+            return Ok(await _pathologyService.GetAllPathologyCategories());
+        }
     }
 }

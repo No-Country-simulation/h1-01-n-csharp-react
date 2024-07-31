@@ -11,5 +11,6 @@ namespace Core.Services.Interfaces
     public interface IPathologyService
     {
         Task<ServiceResponse<List<PathologyGetDto>>> GetAllPathologies();
+        Task<ServiceResponse<List<PathologyCategoriesGetDto>>> GetAllPathologyCategories();
     }
 }

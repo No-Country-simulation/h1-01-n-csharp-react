@@ -41,5 +41,23 @@ namespace Core.Services
 
             return serviceResponse;
         }
+
+        public async Task<ServiceResponse<List<PathologyCategoriesGetDto>>> GetAllPathologyCategories()
+        {
+            var serviceResponse = new ServiceResponse<List<PathologyCategoriesGetDto>>();
+
+            try
+            {
+                serviceResponse.Data = await _pathologyRepository.GetAllPathologyCategories();
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+                _logger.LogError(ex, $"Error al obtener las Categorías - {ex.Message}");
+            }
+
+            return serviceResponse;
+        }
     }
 }

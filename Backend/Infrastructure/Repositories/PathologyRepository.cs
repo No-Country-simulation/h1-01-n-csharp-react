@@ -33,5 +33,14 @@ namespace Infrastructure.Repositories
 
             return pathologies;
         }
+
+        public async Task<List<PathologyCategoriesGetDto>> GetAllPathologyCategories()
+        {
+            var categories = await _context.PathologyCategories
+                    .ProjectTo<PathologyCategoriesGetDto>(_mapper.ConfigurationProvider)
+                    .ToListAsync();
+
+            return categories;
+        }
     }
 }
