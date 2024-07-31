@@ -22,6 +22,7 @@ namespace Core
             //Services
             services.AddHttpContextAccessor();
             services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<IAllergyService, AllergyService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IMedicineService, MedicineService>();
             services.AddScoped<IMedicPatientService, MedicPatientService>();
