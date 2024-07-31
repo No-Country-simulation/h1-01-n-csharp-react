@@ -41,6 +41,7 @@ namespace Infrastructure
             services.AddScoped<IPathologyRepository, PathologyRepository>();
             services.AddScoped<IPatientRepository, PatientRepository>();
             services.AddScoped<ISpecialtyRepository, SpecialtyRepository>();
+            services.AddScoped<ISurgicalHistoryRepository, SurgicalHistoryRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
 
             // Identity

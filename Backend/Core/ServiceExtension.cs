@@ -30,6 +30,7 @@ namespace Core
             services.AddScoped<IPathologyService, PathologyService>();
             services.AddScoped<IPatientService, PatientService>();
             services.AddScoped<ISpecialtyService, SpecialtyService>();
+            services.AddScoped<ISurgicalHistoryService, SurgicalHistoryService>();
 
             // Validation Behavior
             services.AddTransient(typeof(IValidationBehavior<>), typeof(ValidationBehavior<>));
