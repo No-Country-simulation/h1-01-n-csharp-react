@@ -27,6 +27,7 @@ namespace Infrastructure.Repositories
         public async Task<List<PathologyGetDto>> GetAllPathologies()
         {
             var pathologies = await Entities
+                    .Include(p => p.PathologyCategory)
                     .ProjectTo<PathologyGetDto>(_mapper.ConfigurationProvider)
                     .ToListAsync();
 

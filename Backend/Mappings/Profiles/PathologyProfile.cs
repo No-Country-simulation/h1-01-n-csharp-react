@@ -13,7 +13,8 @@ namespace Mappings.Profiles
     {
         public PathologyProfile()
         {
-            CreateMap<Pathology, PathologyGetDto>();
+            CreateMap<Pathology, PathologyGetDto>()
+                .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.PathologyCategory.Name));
         }
     }
 }
