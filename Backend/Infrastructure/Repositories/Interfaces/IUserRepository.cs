@@ -10,6 +10,7 @@ namespace Infrastructure.Repositories.Interfaces
 {
     public interface IUserRepository
     {
+        Task<ApplicationUser> GetPatientUser(int patientId);
         Task<List<DeletedUserGetDto>> GetDeletedUsers();
         Task<bool> IsDNIInUse(string DNI);
         bool Delete(ApplicationUser user);

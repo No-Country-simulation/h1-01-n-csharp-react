@@ -35,6 +35,15 @@ namespace Infrastructure.Repositories
             _userManager = userManager;
         }
 
+        public async Task<ApplicationUser> GetPatientUser(int patientId)
+        {
+            var patient = await _context.Users
+                .Where(u => u.PatientId == patientId)
+                .FirstOrDefaultAsync();
+
+            return patient;
+        }
+
         public async Task<List<DeletedUserGetDto>> GetDeletedUsers()
         {
             var users = await _context.Users

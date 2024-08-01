@@ -99,13 +99,21 @@ namespace API.Controllers
         }
 
         [Authorize(Roles = "Medic")]
-        [HttpPost("AddMedRecord/{patientEmail}")]
-        public async Task<ActionResult<ServiceResponse<bool>>> AddMedRecordToPatient(string patientEmail, MedRecordAddDto request)
+        [HttpPost("AddMedRecord/{patientId}")]
+        public async Task<ActionResult<ServiceResponse<bool>>> AddMedRecordToPatient(int patientId, MedRecordAddDto request)
         {
             var medicId = await GetCurrentMedicUserId();
 
-            return Ok(await _medRecordService.AddMedRecordToPatient(medicId, patientEmail, request));
+            return Ok(await _medRecordService.AddMedRecordToPatient(medicId, patientId, request));
         }
 
+        [Authorize(Roles = "Medic")]
+        [HttpGet("GetMedRecord/{patientId}")]
+        public async Task<ActionResult<ServiceResponse<MedRecordGetDto>>> GetPatientMedRecord(int patientId)
+        {
+            var medicId = await GetCurrentMedicUserId();
+
+            return Ok(await _medRecordService.GetPatientMedRecord(medicId, patientId));
+        }
     }
 }
