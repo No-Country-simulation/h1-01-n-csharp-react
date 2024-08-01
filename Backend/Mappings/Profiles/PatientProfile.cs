@@ -22,14 +22,11 @@ namespace Mappings.Profiles
             CreateMap<Patient, PatientEmailGetDto>()
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.ApplicationUser.Email));
 
-            //CreateMap<Patient, MedicPatientsGetDto>()
-            //    .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.ApplicationUser.Address))
-            //    .ForMember(dest => dest.BloodType, opt => opt.MapFrom(src => src.BloodType.ToString()))
-            //    .ForMember(dest => dest.Pathologies, opt => opt.MapFrom(src => src.PatientPathologies.Select(pp => new PathologyNameGetDto
-            //    {
-            //        Name = pp.Pathology.Name,
-            //        IsActive = pp.IsActive,
-            //    }).ToList()));
+            CreateMap<Patient, MedicPatientsGetDto>()
+                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.ApplicationUser.Address))
+                .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.ApplicationUser.PhoneNumber))
+                .ForMember(dest => dest.BloodType, opt => opt.MapFrom(src => src.BloodType.ToString()));
+
         }
     }
 }

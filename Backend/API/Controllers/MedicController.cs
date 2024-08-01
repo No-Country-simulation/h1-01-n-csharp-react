@@ -89,14 +89,14 @@ namespace API.Controllers
             return Ok(await _medicPatientService.DeleteRelationshipWithPatient(medicId, patientEmail));
         }
 
-        //[Authorize(Roles = "Medic")]
-        //[HttpGet("GetMedicPatients")]
-        //public async Task<ActionResult<ServiceResponse<List<MedicPatientsGetDto>>>> GetMedicPatients()
-        //{
-        //    var medicId = await GetCurrentMedicUserId();
+        [Authorize(Roles = "Medic")]
+        [HttpGet("GetMedicPatients")]
+        public async Task<ActionResult<ServiceResponse<List<MedicPatientsGetDto>>>> GetMedicPatients()
+        {
+            var medicId = await GetCurrentMedicUserId();
 
-        //    return Ok(await _medicPatientService.GetMedicPatients(medicId));
-        //}
+            return Ok(await _medicPatientService.GetMedicPatients(medicId));
+        }
 
         [Authorize(Roles = "Medic")]
         [HttpPost("AddMedRecord/{patientEmail}")]
