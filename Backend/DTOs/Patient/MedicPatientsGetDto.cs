@@ -17,5 +17,6 @@ namespace DTOs.Patient
         public string ParentName { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
         public string BloodType { get; set; }
+        public string ImgSrc { get; set; }
     }
 }

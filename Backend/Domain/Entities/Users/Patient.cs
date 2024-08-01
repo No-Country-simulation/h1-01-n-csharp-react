@@ -18,6 +18,7 @@ namespace Domain.Entities.Users
         public bool IsManagedByParent { get; set; }
         public string ParentName { get; set; } = string.Empty;
         public BloodType BloodType { get; set; }
+        public string ImgSrc { get; set; } = string.Empty;
 
 
         public ApplicationUser ApplicationUser { get; set; }

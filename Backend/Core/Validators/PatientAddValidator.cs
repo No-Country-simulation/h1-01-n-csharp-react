@@ -38,6 +38,12 @@ namespace Core.Validators
             RuleFor(x => x.Address)
                 .NotEmpty().WithMessage("Address es requerido.");
 
+            RuleFor(x => x.PhoneNumber)
+                .NotEmpty().WithMessage("PhoneNumber es requerido.")
+                .MinimumLength(9).WithMessage("PhoneNumber debe tener como mínimo, 9 dígitos.")
+                .MaximumLength(15).WithMessage("PhoneNumber no debe tener mas de 15 dígitos.")
+                .Matches(@"^\d+$").WithMessage("PhoneNumber debe contener solo números.");
+
             RuleFor(x => x.BloodType)
                 .IsInEnum().WithMessage("BloodType debe ser uno de los valores permitidos.");
 

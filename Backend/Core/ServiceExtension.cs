@@ -21,7 +21,6 @@ namespace Core
 
             //Services
             services.AddHttpContextAccessor();
-            services.AddScoped<IAdminService, AdminService>();
             services.AddScoped<IAllergyService, AllergyService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IMedicineService, MedicineService>();
@@ -31,6 +30,7 @@ namespace Core
             services.AddScoped<IPatientService, PatientService>();
             services.AddScoped<ISpecialtyService, SpecialtyService>();
             services.AddScoped<ISurgicalHistoryService, SurgicalHistoryService>();
+            services.AddScoped<IUserService, UserService>();
 
             // Validation Behavior
             services.AddTransient(typeof(IValidationBehavior<>), typeof(ValidationBehavior<>));

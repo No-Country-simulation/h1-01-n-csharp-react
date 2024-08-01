@@ -70,6 +70,8 @@ namespace Core.Services
                 Email = request.Email,
                 EmailConfirmed = true,
                 UserName = request.Email,
+                Address = request.Address,
+                PhoneNumber = request.PhoneNumber,
                 Medic = new Medic
                 {
                     FirstName = request.FirstName.Trim(),
@@ -77,6 +79,7 @@ namespace Core.Services
                     DNI = request.DNI,
                     License = request.License,
                     SpecialtyId = request.SpecialtyId,
+                    ImgSrc = request.ImgSrc,
                 }
             };
 
@@ -126,6 +129,7 @@ namespace Core.Services
                 EmailConfirmed = true,
                 UserName = request.Email,
                 Address = request.Address,
+                PhoneNumber = request.PhoneNumber,
                 Patient = new Patient
                 {
                     FirstName =  request.FirstName.Trim(),
@@ -135,6 +139,7 @@ namespace Core.Services
                     IsManagedByParent = request.IsManagedByParent,
                     ParentName = request.IsManagedByParent ? request.ParentName : "",
                     BloodType = request.BloodType,
+                    ImgSrc = request.ImgSrc,
                 }
             };
 

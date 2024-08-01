@@ -1,13 +1,8 @@
-﻿using Azure.Core;
-using Core.Behaviors;
-using Core.Services.Interfaces;
-using Domain.Entities.Medical;
-using Domain.Entities.Users;
-using DTOs;
+﻿using Domain.Entities.Users;
 using DTOs.Medic;
 using DTOs.Patient;
-using DTOs.Register;
 using DTOs.User;
+using DTOs;
 using Infrastructure.Repositories.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
@@ -16,19 +11,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Services.Interfaces;
 
 namespace Core.Services
 {
-    public class AdminService : IAdminService
+    public class UserService : IUserService
     {
-        private readonly ILogger<AdminService> _logger;
+        private readonly ILogger<UserService> _logger;
         private readonly IMedicRepository _medicRepository;
         private readonly IPatientRepository _patientRepository;
         private readonly IUserRepository _userRepository;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public AdminService(
-            ILogger<AdminService> logger,
+        public UserService(
+            ILogger<UserService> logger,
             IMedicRepository medicRepository,
             IPatientRepository patientRepository,
             UserManager<ApplicationUser> userManager,
@@ -139,7 +135,7 @@ namespace Core.Services
                     case { MedicId: not null }:
                         var medicId = user.MedicId.Value;
                         _userRepository.Delete(user);
-                        await _medicRepository.Delete(medicId); 
+                        await _medicRepository.Delete(medicId);
                         break;
 
                     case { PatientId: not null }:

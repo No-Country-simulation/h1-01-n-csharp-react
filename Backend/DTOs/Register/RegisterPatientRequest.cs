@@ -17,10 +17,12 @@ namespace DTOs.Register
         public bool IsManagedByParent { get; set; } = false;
         public string ParentName { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
+        public string PhoneNumber { get; set; } = string.Empty;
         public BloodType BloodType { get; set; }
         public string Email { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
         public string ConfirmPassword { get; set; } = string.Empty;
+        public string ImgSrc { get; set; } = string.Empty;
         [JsonIgnore]
         public UserRoles UserType { get; set; } = UserRoles.Patient;
     }

@@ -1,16 +1,16 @@
 ﻿using DTOs.Medic;
+using DTOs.Patient;
+using DTOs.User;
 using DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DTOs.Patient;
-using DTOs.User;
 
 namespace Core.Services.Interfaces
 {
-    public interface IAdminService
+    public interface IUserService
     {
         Task<ServiceResponse<List<MedicGetDto>>> GetAllMedicUsers();
         Task<ServiceResponse<List<PatientGetDto>>> GetAllPatientUsers();
