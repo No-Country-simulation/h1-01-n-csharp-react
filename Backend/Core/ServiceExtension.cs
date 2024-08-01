@@ -26,6 +26,7 @@ namespace Core
             services.AddScoped<IMedicineService, MedicineService>();
             services.AddScoped<IMedicPatientService, MedicPatientService>();
             services.AddScoped<IMedicService, MedicService>();
+            services.AddScoped<IMedRecordService, MedRecordService>();
             services.AddScoped<IPathologyService, PathologyService>();
             services.AddScoped<IPatientService, PatientService>();
             services.AddScoped<ISpecialtyService, SpecialtyService>();

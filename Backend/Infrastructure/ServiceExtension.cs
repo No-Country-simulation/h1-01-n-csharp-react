@@ -38,6 +38,7 @@ namespace Infrastructure
             services.AddScoped<IMedicineRepository, MedicineRepository>();
             services.AddScoped<IMedicPatientRepository, MedicPatientRepository>();
             services.AddScoped<IMedicRepository, MedicRepository>();
+            services.AddScoped<IMedRecordRepository, MedRecordRepository>();
             services.AddScoped<IPathologyRepository, PathologyRepository>();
             services.AddScoped<IPatientRepository, PatientRepository>();
             services.AddScoped<ISpecialtyRepository, SpecialtyRepository>();

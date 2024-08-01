@@ -1,6 +1,7 @@
 ﻿using Core.Services.Interfaces;
 using Domain.Entities.Users;
 using DTOs;
+using DTOs.MedRecord;
 using DTOs.Patient;
 using DTOs.Register;
 using Microsoft.AspNetCore.Authorization;
@@ -16,17 +17,20 @@ namespace API.Controllers
         private readonly IMedicService _medicService;
         private readonly IPatientService _patientService;
         private readonly IMedicPatientService _medicPatientService;
+        private readonly IMedRecordService _medRecordService;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public MedicController(
             IMedicService medicService,
             IPatientService patientService,
             IMedicPatientService medicPatientService,
+            IMedRecordService medRecordService,
             UserManager<ApplicationUser> userManager)
         {
             _medicService = medicService;
             _patientService = patientService;
             _medicPatientService = medicPatientService;
+            _medRecordService = medRecordService;
             _userManager = userManager;
         }
 
@@ -93,6 +97,15 @@ namespace API.Controllers
 
         //    return Ok(await _medicPatientService.GetMedicPatients(medicId));
         //}
+
+        [Authorize(Roles = "Medic")]
+        [HttpPost("AddMedRecord/{patientEmail}")]
+        public async Task<ActionResult<ServiceResponse<bool>>> AddMedRecordToPatient(string patientEmail, MedRecordAddDto request)
+        {
+            var medicId = await GetCurrentMedicUserId();
+
+            return Ok(await _medRecordService.AddMedRecordToPatient(medicId, patientEmail, request));
+        }
 
     }
 }
