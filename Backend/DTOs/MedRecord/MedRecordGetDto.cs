@@ -20,7 +20,6 @@ namespace DTOs.MedRecord
 
         public MedicPatientsGetDto Patient { get; set; }
         public List<MedRecordAllergiesGetDto> MedRecordAllergies { get; set; }
-        public List<MedRecordPathologiesGetDto> MedRecordPathologies { get; set; }
         public List<MedRecordFamilyHistoriesGetDto> FamilyHistories { get; set; }
         public List<MedRecordSurgicalHistoriesGetDto> SurgicalHistories { get; set; }
         public List<MedRecordClinicalHistoriesGetDto> ClinicalHistories { get; set; }

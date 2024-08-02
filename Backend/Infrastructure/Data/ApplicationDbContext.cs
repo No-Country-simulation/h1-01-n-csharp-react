@@ -42,7 +42,6 @@ namespace Infrastructure.Data
         public DbSet<Medicine> Medicines { get; set; }
         public DbSet<MedRecord> MedRecords { get; set; }
         public DbSet<MedRecordAllergy> MedRecordAllergies { get; set; }
-        public DbSet<MedRecordPathology> MedRecordPathologies { get; set; }
         public DbSet<Pathology> Pathologies { get; set; }
         public DbSet<PathologyCategory> PathologyCategories { get; set; }
         public DbSet<Specialty> Specialties { get; set; }

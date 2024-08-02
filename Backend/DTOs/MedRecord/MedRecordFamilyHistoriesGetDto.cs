@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTOs.Pathology;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,6 @@ namespace DTOs.MedRecord
         public int Id { get; set; }
         public string Details { get; set; }
         public string FamilyRelation { get; set; }
-        public List<MedRecordPathologiesGetDto> Pathologies { get; set; }
+        public List<RecordPathologyGetDto> Pathologies { get; set; }
     }
 }

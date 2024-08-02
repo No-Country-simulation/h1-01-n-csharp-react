@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DTOs.MedRecord
+namespace DTOs.Pathology
 {
-    public class MedRecordPathologiesGetDto
+    public class RecordPathologyGetDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

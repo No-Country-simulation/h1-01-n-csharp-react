@@ -18,7 +18,6 @@ namespace Domain.Entities.Medical
 
         public Patient Patient { get; set; }
         public int PatientId { get; set; }
-        public List<MedRecordPathology> MedRecordPathologies { get; set; }
         public List<MedRecordAllergy> MedRecordAllergies { get; set; }
         public List<Appointment> Appointments { get; set; }
         public List<Treatment> Treatments { get; set; }

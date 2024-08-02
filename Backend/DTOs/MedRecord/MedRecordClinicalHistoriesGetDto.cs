@@ -17,5 +17,6 @@ namespace DTOs.MedRecord
         public string PathologyName { get; set; }
         public string PathologyCategory { get; set; }
         public string Color { get; set; }
+        public bool IsActive { get; set; }
     }
 }

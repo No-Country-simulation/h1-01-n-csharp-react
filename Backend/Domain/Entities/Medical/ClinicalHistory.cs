@@ -11,6 +11,7 @@ namespace Domain.Entities.Medical
         public string MedicName { get; set; }
         public string Details { get; set; }
         public DateTime DiagnosisDate { get; set; }
+        public bool IsActive { get; set; } = true;
         public string CreatorName { get; set; }
         public string CreatorSpecialty { get; set; }
 

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Entities.Medical;
 using DTOs.MedRecord;
+using DTOs.Pathology;
 using DTOs.Patient;
 using System;
 using System.Collections.Generic;
@@ -38,14 +39,6 @@ namespace Mappings.Profiles
                         Category = mra.Allergy.AllergyCategory.Name,
                         Color = mra.Allergy.AllergyCategory.Color
                     }).ToList()))
-                .ForMember(dest => dest.MedRecordPathologies, opt => opt.MapFrom(src => src.MedRecordPathologies
-                    .Select(mrp => new MedRecordPathologiesGetDto
-                    {
-                        Id = mrp.PathologyId,
-                        Name = mrp.Pathology.Name,
-                        Category = mrp.Pathology.PathologyCategory.Name,
-                        Color = mrp.Pathology.PathologyCategory.Color
-                    }).ToList()))
                 .ForMember(dest => dest.FamilyHistories, opt => opt.MapFrom(src => src.FamilyHistories
                     .Select(fh => new MedRecordFamilyHistoriesGetDto
                     {
@@ -53,7 +46,7 @@ namespace Mappings.Profiles
                         Details = fh.Details,
                         FamilyRelation = fh.FamilyRelation.ToString(),
                         Pathologies = fh.FamilyHistoryPathologies
-                            .Select(fhp => new MedRecordPathologiesGetDto
+                            .Select(fhp => new RecordPathologyGetDto
                             {
                                 Id = fhp.Pathology.Id,
                                 Name = fhp.Pathology.Name,
@@ -84,7 +77,8 @@ namespace Mappings.Profiles
                         CreatorSpecialty = ch.CreatorSpecialty,
                         PathologyName = ch.Pathology.Name,
                         PathologyCategory = ch.Pathology.PathologyCategory.Name,
-                        Color = ch.Pathology.PathologyCategory.Color
+                        Color = ch.Pathology.PathologyCategory.Color,
+                        IsActive = ch.IsActive,
                     }).ToList()));
         }
     }
