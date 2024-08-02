@@ -115,5 +115,6 @@ namespace API.Controllers
 
             return Ok(await _medRecordService.GetPatientMedRecord(medicId, patientId));
         }
+
     }
 }

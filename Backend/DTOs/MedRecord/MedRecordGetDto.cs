@@ -1,4 +1,5 @@
 ﻿using DTOs.Allergy;
+using DTOs.Patient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace DTOs.MedRecord
         public bool UsesDrugs { get; set; }
         public string Note { get; set; } = string.Empty;
 
+        public MedicPatientsGetDto Patient { get; set; }
         public List<MedRecordAllergiesGetDto> MedRecordAllergies { get; set; }
         public List<MedRecordPathologiesGetDto> MedRecordPathologies { get; set; }
         public List<MedRecordFamilyHistoriesGetDto> FamilyHistories { get; set; }

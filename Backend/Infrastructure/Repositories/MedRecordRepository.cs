@@ -27,6 +27,8 @@ namespace Infrastructure.Repositories
         {
             var record = await Entities
                 .Where(x => x.Id == recordId)
+                .Include(x => x.Patient)
+                    .ThenInclude(x => x.ApplicationUser)
                 .Include(x => x.MedRecordAllergies)
                     .ThenInclude(mra => mra.Allergy)
                         .ThenInclude(a => a.AllergyCategory)

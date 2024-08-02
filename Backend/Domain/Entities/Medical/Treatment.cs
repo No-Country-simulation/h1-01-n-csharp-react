@@ -9,6 +9,7 @@ namespace Domain.Entities.Medical
 {
     public class Treatment : BaseEntity<int>
     {
+        public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int TotalDays => (EndDate - StartDate).Days + 1;

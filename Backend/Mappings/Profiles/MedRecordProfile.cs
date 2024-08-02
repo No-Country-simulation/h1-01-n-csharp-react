@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Entities.Medical;
 using DTOs.MedRecord;
+using DTOs.Patient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,20 @@ namespace Mappings.Profiles
         public MedRecordProfile()
         {
             CreateMap<MedRecord, MedRecordGetDto>()
+                .ForMember(dest => dest.Patient, opt => opt.MapFrom(src => new MedicPatientsGetDto
+                {
+                    Id = src.Patient.Id,
+                    MedRecordId = src.Id,
+                    FirstName = src.Patient.FirstName,
+                    LastName = src.Patient.LastName,
+                    DNI = src.Patient.DNI,
+                    BirthDate = src.Patient.BirthDate,
+                    ParentName = src.Patient.ParentName,
+                    Address = src.Patient.ApplicationUser.Address,
+                    PhoneNumber = src.Patient.ApplicationUser.PhoneNumber == null? "" : src.Patient.ApplicationUser.PhoneNumber,
+                    BloodType = src.Patient.BloodType.ToString(),
+                    ImgSrc = src.Patient.ImgSrc
+                }))
                 .ForMember(dest => dest.MedRecordAllergies, opt => opt.MapFrom(src => src.MedRecordAllergies
                     .Select(mra => new MedRecordAllergiesGetDto
                     {
