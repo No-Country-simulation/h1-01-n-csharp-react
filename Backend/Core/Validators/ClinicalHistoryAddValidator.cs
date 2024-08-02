@@ -20,7 +20,8 @@ namespace Core.Validators
                 .Must(BeAValidAge).WithMessage("La fecha de nacimiento no es válida.");
 
             RuleFor(x => x.PathologyId)
-                .NotEmpty().WithMessage("PathologyId es requerido.");
+                .NotEmpty().WithMessage("PathologyId es requerido.")
+                .NotEqual(0).WithMessage("PathologyId no puede ser 0.");
         }
 
         private bool BeAValidAge(DateTime date)
