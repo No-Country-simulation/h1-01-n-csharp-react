@@ -116,7 +116,7 @@ namespace Core.Services
 
             try
             {
-                serviceResponse.Data = await _patientRepository.GetMedicPatientsWithPathologies(id);
+                serviceResponse.Data = await _patientRepository.GetMedicPatients(id);
             }
             catch (Exception ex)
             {

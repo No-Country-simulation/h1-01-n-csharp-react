@@ -2,6 +2,7 @@
 using Domain.Entities.Users;
 using DTOs;
 using DTOs.ClinicalHistory;
+using DTOs.Medic;
 using DTOs.MedRecord;
 using DTOs.Patient;
 using DTOs.Register;
@@ -66,6 +67,15 @@ namespace API.Controllers
         public async Task<ActionResult<ServiceResponse<RegisterResponse>>> RegisterMedicUser(RegisterMedicRequest request)
         {
             return Ok(await _medicService.RegisterMedicUser(request));
+        }
+
+        [Authorize(Roles = "Medic")]
+        [HttpGet("GetMedicUserData")]
+        public async Task<ActionResult<ServiceResponse<PatientMedicsGetDto>>> GetMedicUserData()
+        {
+            var medicId = await GetCurrentMedicUserId();
+
+            return Ok(await _medicService.GetMedicUserData(medicId));
         }
 
         [Authorize(Roles = "Admin,Medic")]

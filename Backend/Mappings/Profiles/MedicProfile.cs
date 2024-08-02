@@ -18,7 +18,9 @@ namespace Mappings.Profiles
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.ApplicationUser.Email));
 
             CreateMap<Medic, PatientMedicsGetDto>()
-                .ForMember(dest => dest.Specialty, opt => opt.MapFrom(src => src.Specialty.Type));
+                .ForMember(dest => dest.Specialty, opt => opt.MapFrom(src => src.Specialty.Type))
+                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.ApplicationUser.Address))
+                .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.ApplicationUser.PhoneNumber));
         }
     }
 }

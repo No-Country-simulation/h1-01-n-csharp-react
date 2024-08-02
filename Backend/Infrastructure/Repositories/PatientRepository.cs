@@ -50,7 +50,7 @@ namespace Infrastructure.Repositories
                 .AnyAsync(patient => patient.DNI == DNI);
         }
 
-        public async Task<List<MedicPatientsGetDto>> GetMedicPatientsWithPathologies(int medicId)
+        public async Task<List<MedicPatientsGetDto>> GetMedicPatients(int medicId)
         {
             var patients = await Entities
                 .Include(p => p.ApplicationUser)

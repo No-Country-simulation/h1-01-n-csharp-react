@@ -1,7 +1,11 @@
-﻿using Core.Behaviors;
+﻿using AutoMapper;
+using Core.Behaviors;
 using Core.Services.Interfaces;
 using DTOs;
+using DTOs.Medic;
+using DTOs.Patient;
 using DTOs.Register;
+using Infrastructure.Repositories.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System;
@@ -18,17 +22,23 @@ namespace Core.Services
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly ILogger<MedicService> _logger;
         private readonly IValidationBehavior<RegisterMedicRequest> _validationBehavior;
+        private readonly IMedicRepository _medicRepository;
+        private readonly IMapper _mapper;
 
         public MedicService(
             IAuthenticationService authenticationService,
             IHttpContextAccessor contextAccessor,
             ILogger<MedicService> logger,
-            IValidationBehavior<RegisterMedicRequest> validationBehavior)
+            IValidationBehavior<RegisterMedicRequest> validationBehavior,
+            IMedicRepository medicRepository,
+            IMapper mapper)
         {
             _authenticationService = authenticationService;
             _contextAccessor = contextAccessor;
             _logger = logger;
             _validationBehavior = validationBehavior;
+            _medicRepository = medicRepository;
+            _mapper = mapper;
         }
 
         public async Task<ServiceResponse<RegisterResponse>> RegisterMedicUser(RegisterMedicRequest request)
@@ -49,6 +59,26 @@ namespace Core.Services
                 serviceResponse.Success = false;
                 serviceResponse.Message = ex.Message;
                 _logger.LogError(ex, $"Error al agregar nuevo Médico - {ex.Message}");
+            }
+
+            return serviceResponse;
+        }
+
+        public async Task<ServiceResponse<PatientMedicsGetDto>> GetMedicUserData(int medicId)
+        {
+            var serviceResponse = new ServiceResponse<PatientMedicsGetDto>();
+
+            try
+            {
+                var medic = await _medicRepository.GetByIdAsync(medicId, m => m.Specialty, m => m.ApplicationUser);
+
+                serviceResponse.Data = _mapper.Map<PatientMedicsGetDto>(medic);
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+                _logger.LogError(ex, $"Error al obtener información del Médico - {ex.Message}");
             }
 
             return serviceResponse;
