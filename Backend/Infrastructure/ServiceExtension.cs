@@ -35,6 +35,8 @@ namespace Infrastructure
 
             //Repositories
             services.AddScoped<IAllergyRepository, AllergyRepository>();
+            services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+            services.AddScoped<IClinicalHistoryRepository, ClinicalHistoryRepository>();
             services.AddScoped<IMedicineRepository, MedicineRepository>();
             services.AddScoped<IMedicPatientRepository, MedicPatientRepository>();
             services.AddScoped<IMedicRepository, MedicRepository>();
@@ -43,6 +45,7 @@ namespace Infrastructure
             services.AddScoped<IPatientRepository, PatientRepository>();
             services.AddScoped<ISpecialtyRepository, SpecialtyRepository>();
             services.AddScoped<ISurgicalHistoryRepository, SurgicalHistoryRepository>();
+            services.AddScoped<ITreatmentRepository, TreatmentRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
 
             // Identity

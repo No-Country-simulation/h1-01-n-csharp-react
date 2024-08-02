@@ -1,14 +1,18 @@
-﻿using Domain.Entities.Users;
+﻿using Domain.Entities.Medical;
+using DTOs.Document;
+using DTOs.Medicine;
+using DTOs.Pathology;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities.Medical
+namespace DTOs.Treatment
 {
-    public class Treatment : BaseEntity<int>
+    public class TreatmentGetDto
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
@@ -22,11 +26,8 @@ namespace Domain.Entities.Medical
         public string CreatorName { get; set; }
         public string CreatorSpecialty { get; set; }
 
-        public MedRecord MedRecord { get; set; }
-        public int MedRecordId { get; set; }
-        public Pathology Pathology { get; set; }
-        public int PathologyId { get; set; }
-        public List<MedDosage> MedDosages { get; set; }
-        public List<Document> Documents { get; set; }
+        public RecordPathologyGetDto TreatmentPathology { get; set; }
+        public List<MedDosageGetDto> MedDosages { get; set; }
+        public List<DocumentGetDto> Documents { get; set; }
     }
 }

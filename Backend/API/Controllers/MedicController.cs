@@ -1,6 +1,7 @@
 ﻿using Core.Services.Interfaces;
 using Domain.Entities.Users;
 using DTOs;
+using DTOs.ClinicalHistory;
 using DTOs.MedRecord;
 using DTOs.Patient;
 using DTOs.Register;
@@ -18,6 +19,7 @@ namespace API.Controllers
         private readonly IPatientService _patientService;
         private readonly IMedicPatientService _medicPatientService;
         private readonly IMedRecordService _medRecordService;
+        private readonly IClinicalHistoryService _clinicalHistoryService;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public MedicController(
@@ -25,12 +27,14 @@ namespace API.Controllers
             IPatientService patientService,
             IMedicPatientService medicPatientService,
             IMedRecordService medRecordService,
+            IClinicalHistoryService clinicalHistoryService,
             UserManager<ApplicationUser> userManager)
         {
             _medicService = medicService;
             _patientService = patientService;
             _medicPatientService = medicPatientService;
             _medRecordService = medRecordService;
+            _clinicalHistoryService = clinicalHistoryService;
             _userManager = userManager;
         }
 
@@ -116,5 +120,22 @@ namespace API.Controllers
             return Ok(await _medRecordService.GetPatientMedRecord(medicId, patientId));
         }
 
+        [Authorize(Roles = "Medic")]
+        [HttpPost("AddClinicalHistory/{medRecordId}")]
+        public async Task<ActionResult<ServiceResponse<bool>>> AddClinicalHistory(int medRecordId, ClinicalHistoryAddDto request)
+        {
+            var medicId = await GetCurrentMedicUserId();
+
+            return Ok(await _clinicalHistoryService.AddClinicalHistory(medicId, medRecordId, request));
+        }
+
+        [Authorize(Roles = "Medic")]
+        [HttpGet("GetClinicalHistories/{medRecordId}")]
+        public async Task<ActionResult<ServiceResponse<ClinicalHistoryGetDto>>> GetClinicalHistoriesFromRecord(int medRecordId)
+        {
+            var medicId = await GetCurrentMedicUserId();
+
+            return Ok(await _clinicalHistoryService.GetClinicalHistoriesFromRecord(medicId, medRecordId));
+        }
     }
 }

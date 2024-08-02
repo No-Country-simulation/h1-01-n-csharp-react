@@ -1,13 +1,15 @@
-﻿using System;
+﻿using DTOs.Pathology;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities.Medical
+namespace DTOs.ClinicalHistory
 {
-    public class ClinicalHistory : BaseEntity<int>
+    public class ClinicalHistoryGetDto
     {
+        public int Id { get; set; }
         public string MedicName { get; set; }
         public string Details { get; set; } = string.Empty;
         public DateTime DiagnosisDate { get; set; }
@@ -15,9 +17,6 @@ namespace Domain.Entities.Medical
         public string CreatorName { get; set; }
         public string CreatorSpecialty { get; set; }
 
-        public MedRecord MedRecord { get; set; }
-        public int MedRecordId { get; set; }
-        public Pathology Pathology { get; set; }
-        public int PathologyId { get; set; }
+        public RecordPathologyGetDto RecordPathology { get; set; }
     }
 }
