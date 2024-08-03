@@ -17,7 +17,7 @@ namespace Core.Validators
 
             RuleFor(x => x.DiagnosisDate)
                 .NotEmpty().WithMessage("DiagnosisDate es requerido.")
-                .Must(BeAValidAge).WithMessage("La fecha de nacimiento no es válida.");
+                .Must(BeAValidAge).WithMessage("La fecha de diagnóstico no es válida.");
 
             RuleFor(x => x.PathologyId)
                 .NotEmpty().WithMessage("PathologyId es requerido.")

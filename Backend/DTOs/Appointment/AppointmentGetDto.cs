@@ -11,6 +11,7 @@ namespace DTOs.Appointment
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public DateTime Hour { get; set; }
+        public string AppointmentType { get; set; }
         public bool IsActive { get; set; }
         public string MedicName { get; set; }
         public string MedicSpecialty { get; set; }

@@ -11,6 +11,7 @@ namespace Domain.Entities.Medical
     {
         public DateTime Date { get; set; }
         public DateTime Hour { get; set; }
+        public AppointmentType AppointmentType { get; set; }
         public bool IsActive { get; set; }
 
         public Medic Medic { get; set; }

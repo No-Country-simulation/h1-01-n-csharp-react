@@ -1,6 +1,7 @@
 ﻿using Core.Services.Interfaces;
 using Domain.Entities.Users;
 using DTOs;
+using DTOs.Appointment;
 using DTOs.ClinicalHistory;
 using DTOs.Medic;
 using DTOs.MedRecord;
@@ -21,6 +22,8 @@ namespace API.Controllers
         private readonly IMedicPatientService _medicPatientService;
         private readonly IMedRecordService _medRecordService;
         private readonly IClinicalHistoryService _clinicalHistoryService;
+        private readonly IAppointmentService _appointmentService;
+        private readonly ITreatmentService _treatmentService;
         private readonly UserManager<ApplicationUser> _userManager;
 
         public MedicController(
@@ -29,6 +32,8 @@ namespace API.Controllers
             IMedicPatientService medicPatientService,
             IMedRecordService medRecordService,
             IClinicalHistoryService clinicalHistoryService,
+            IAppointmentService appointmentService,
+            ITreatmentService treatmentService,
             UserManager<ApplicationUser> userManager)
         {
             _medicService = medicService;
@@ -36,6 +41,8 @@ namespace API.Controllers
             _medicPatientService = medicPatientService;
             _medRecordService = medRecordService;
             _clinicalHistoryService = clinicalHistoryService;
+            _appointmentService = appointmentService;
+            _treatmentService = treatmentService;
             _userManager = userManager;
         }
 
@@ -146,6 +153,15 @@ namespace API.Controllers
             var medicId = await GetCurrentMedicUserId();
 
             return Ok(await _clinicalHistoryService.GetClinicalHistoriesFromRecord(medicId, medRecordId));
+        }
+
+        [Authorize(Roles = "Medic")]
+        [HttpPost("AddAppointment/{patientEmail}")]
+        public async Task<ActionResult<ServiceResponse<bool>>> AddAppointmentToPatient(string patientEmail, AppointmentAddDto request)
+        {
+            var medicId = await GetCurrentMedicUserId();
+
+            return Ok(await _appointmentService.AddAppointmentToPatient(medicId, patientEmail, request));
         }
     }
 }

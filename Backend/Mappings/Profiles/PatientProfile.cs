@@ -23,6 +23,7 @@ namespace Mappings.Profiles
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.ApplicationUser.Email));
 
             CreateMap<Patient, MedicPatientsGetDto>()
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.ApplicationUser.Email))
                 .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.ApplicationUser.Address))
                 .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.ApplicationUser.PhoneNumber))
                 .ForMember(dest => dest.BloodType, opt => opt.MapFrom(src => src.BloodType.ToString()));

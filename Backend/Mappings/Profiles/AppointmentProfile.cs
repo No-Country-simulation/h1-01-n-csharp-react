@@ -17,6 +17,7 @@ namespace Mappings.Profiles
             CreateMap<Appointment, AppointmentGetDto>()
                 .ForMember(dest => dest.MedicName, opt => opt.MapFrom(src => $"{src.Medic.FirstName} {src.Medic.LastName}"))
                 .ForMember(dest => dest.MedicSpecialty, opt => opt.MapFrom(src => src.Medic.Specialty.Type))
+                .ForMember(dest => dest.AppointmentType, opt => opt.MapFrom(src => src.AppointmentType.ToString()))
                 .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => $"{src.MedRecord.Patient.FirstName} {src.MedRecord.Patient.LastName}"));
 
         }
