@@ -46,6 +46,7 @@ namespace Core.Services
         public async Task<ServiceResponse<bool>> AddAppointmentToPatient(int medicId, string patientEmail, AppointmentAddDto request)
         {
             var serviceResponse = new ServiceResponse<bool>();
+
             try
             {
                 var patientUser = await _userManager.FindByEmailAsync(patientEmail);

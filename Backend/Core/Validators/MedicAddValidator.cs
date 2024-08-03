@@ -39,8 +39,8 @@ namespace Core.Validators
                 .Matches(@"^\d+$").WithMessage("PhoneNumber debe contener solo números.");
 
             RuleFor(x => x.SpecialtyId)
-                .NotEmpty().WithMessage("EspecialidadId es requerido.")
-                .NotEqual(0).WithMessage("EspecialidadId no puede ser 0.");
+                .NotEmpty().WithMessage("SpecialtyId es requerido.")
+                .GreaterThan(0).WithMessage("SpecialtyId debe ser mayor a 0.");
 
             RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("Email es requerido.")

@@ -7,6 +7,7 @@ using DTOs.Medic;
 using DTOs.MedRecord;
 using DTOs.Patient;
 using DTOs.Register;
+using DTOs.Treatment;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -173,5 +174,13 @@ namespace API.Controllers
             return Ok(await _appointmentService.GetMedicAppointments(medicId));
         }
 
+        [Authorize(Roles = "Medic")]
+        [HttpPost("AddTreatment/{patientEmail}")]
+        public async Task<ActionResult<ServiceResponse<bool>>> AddTreatmentToPatient(string patientEmail, TreatmentAddDto request)
+        {
+            var medicId = await GetCurrentMedicUserId();
+
+            return Ok(await _treatmentService.AddTreatmentToPatient(medicId, patientEmail, request));
+        }
     }
 }

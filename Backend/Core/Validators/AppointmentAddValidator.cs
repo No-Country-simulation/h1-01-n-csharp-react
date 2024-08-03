@@ -20,9 +20,6 @@ namespace Core.Validators
                 .NotEmpty().WithMessage("Hour es requerida.")
                 .GreaterThan(DateTime.Now).WithMessage("Hour debe ser en el futuro.");
 
-            RuleFor(x => x.Date)
-                .NotEmpty().WithMessage("FirstName es requerido.");
-
             RuleFor(x => x.AppointmentType)
                 .IsInEnum().WithMessage("AppointmentType debe ser uno de los valores permitidos.");
 
