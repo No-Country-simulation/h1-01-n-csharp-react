@@ -13,6 +13,7 @@ using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Domain.Entities.Users;
 using Core.Behaviors;
+using DTOs.Appointment;
 
 namespace Core.Services
 {
@@ -97,6 +98,24 @@ namespace Core.Services
                 serviceResponse.Success = false;
                 serviceResponse.Message = ex.Message;
                 _logger.LogError(ex, $"Error al agregar nuevo Tratamiento - {ex.Message}");
+            }
+
+            return serviceResponse;
+        }
+
+        public async Task<ServiceResponse<List<TreatmentGetDto>>> GetMedicTreatments(int medicId)
+        {
+            var serviceResponse = new ServiceResponse<List<TreatmentGetDto>>();
+
+            try
+            {
+                serviceResponse.Data = await _treatmentRepository.GetMedicTreatments(medicId);
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+                _logger.LogError(ex, $"Error al obtener los Tratamientos de este Médico. - {ex.Message}");
             }
 
             return serviceResponse;

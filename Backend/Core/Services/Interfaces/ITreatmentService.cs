@@ -11,5 +11,6 @@ namespace Core.Services.Interfaces
     public interface ITreatmentService
     {
         Task<ServiceResponse<bool>> AddTreatmentToPatient(int medicId, string patientEmail, TreatmentAddDto request);
+        Task<ServiceResponse<List<TreatmentGetDto>>> GetMedicTreatments(int medicId);
     }
 }

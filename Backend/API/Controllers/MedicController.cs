@@ -182,5 +182,14 @@ namespace API.Controllers
 
             return Ok(await _treatmentService.AddTreatmentToPatient(medicId, patientEmail, request));
         }
+
+        [Authorize(Roles = "Medic")]
+        [HttpGet("GetTreatments")]
+        public async Task<ActionResult<ServiceResponse<List<TreatmentGetDto>>>> GetMedicTreatments()
+        {
+            var medicId = await GetCurrentMedicUserId();
+
+            return Ok(await _treatmentService.GetMedicTreatments(medicId));
+        }
     }
 }

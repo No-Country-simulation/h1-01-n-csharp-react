@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Domain.Entities.Medical;
+using DTOs.Treatment;
 using Infrastructure.Data;
 using Infrastructure.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +21,23 @@ namespace Infrastructure.Repositories
         {
             _context = context;
             _mapper = mapper;
+        }
+
+        public async Task<List<TreatmentGetDto>> GetMedicTreatments(int medicId)
+        {
+            var treatments = await Entities
+                .Include(t => t.MedRecord)
+                    .ThenInclude(mr => mr.Patient)
+                        .ThenInclude(p => p.MedicPatients)
+                .Where(t => t.MedRecord.Patient.MedicPatients.Any(mp => mp.MedicId == medicId))
+                .Include(x => x.Pathology)
+                    .ThenInclude(x => x.PathologyCategory)
+                .Include(x => x.MedDosages)
+                    .ThenInclude(x => x.Medicine)
+                .Include(x => x.Documents)
+                .ToListAsync();
+
+            return _mapper.Map<List<TreatmentGetDto>>(treatments);
         }
     }
 }
