@@ -4,6 +4,7 @@ using Domain.Entities.Medical;
 using Domain.Entities.Users;
 using DTOs;
 using DTOs.Appointment;
+using DTOs.Specialty;
 using Infrastructure.Repositories;
 using Infrastructure.Repositories.Interfaces;
 using Microsoft.AspNetCore.Identity;
@@ -20,7 +21,6 @@ namespace Core.Services
     {
         private readonly ILogger<AppointmentService> _logger;
         private readonly IAppointmentRepository _appointmentRepository;
-        private readonly IMedRecordRepository _medRecordRepository;
         private readonly IMedicPatientRepository _medicPatientRepository;
         private readonly IMedicRepository _medicRepository;
         private readonly IPatientRepository _patientRepository;
@@ -30,18 +30,14 @@ namespace Core.Services
         public AppointmentService(
             ILogger<AppointmentService> logger,
             IAppointmentRepository appointmentRepository,
-            IMedRecordRepository medRecordRepository,
             IMedicPatientRepository medicPatientRepository,
-            IMedicRepository medicRepository,
             IPatientRepository patientRepository,
             IValidationBehavior<AppointmentAddDto> validationBehavior,
             UserManager<ApplicationUser> userManager)
         {
             _logger = logger;
             _appointmentRepository = appointmentRepository;
-            _medRecordRepository = medRecordRepository;
             _medicPatientRepository = medicPatientRepository;
-            _medicRepository = medicRepository;
             _patientRepository = patientRepository;
             _validationBehavior = validationBehavior;
             _userManager = userManager;
@@ -92,6 +88,24 @@ namespace Core.Services
                 serviceResponse.Success = false;
                 serviceResponse.Message = ex.Message;
                 _logger.LogError(ex, $"Error al agregar nuevo Turno - {ex.Message}");
+            }
+
+            return serviceResponse;
+        }
+
+        public async Task<ServiceResponse<List<AppointmentGetDto>>> GetMedicAppointments(int medicId)
+        {
+            var serviceResponse = new ServiceResponse<List<AppointmentGetDto>>();
+
+            try
+            {
+                serviceResponse.Data = await _appointmentRepository.GetMedicAppointments(medicId);
+            }
+            catch (Exception ex)
+            {
+                serviceResponse.Success = false;
+                serviceResponse.Message = ex.Message;
+                _logger.LogError(ex, $"Error al obtener los Turnos de este Médico. - {ex.Message}");
             }
 
             return serviceResponse;

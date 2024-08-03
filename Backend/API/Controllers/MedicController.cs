@@ -163,5 +163,15 @@ namespace API.Controllers
 
             return Ok(await _appointmentService.AddAppointmentToPatient(medicId, patientEmail, request));
         }
+
+        [Authorize(Roles = "Medic")]
+        [HttpGet("GetAppointments")]
+        public async Task<ActionResult<ServiceResponse<List<AppointmentGetDto>>>> GetMedicAppointments()
+        {
+            var medicId = await GetCurrentMedicUserId();
+
+            return Ok(await _appointmentService.GetMedicAppointments(medicId));
+        }
+
     }
 }
