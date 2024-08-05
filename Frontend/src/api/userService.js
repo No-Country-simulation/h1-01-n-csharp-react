@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from 'axios'
 
-const BASE_URL = 'http://justinaapi.somee.com/api/User';
+const BASE_URL = 'https://justinaapi.somee.com/api/User'
 
 export const authenticateUser = async (userData) => {
   try {
@@ -8,10 +8,10 @@ export const authenticateUser = async (userData) => {
       headers: {
         'Content-Type': 'application/json-patch+json'
       }
-    });
-    return response.data;
+    })
+    return response.data
   } catch (error) {
-    console.error('Error authenticating user:', error);
-    throw error;
+    console.error('Error authenticating user:', error)
+    throw error
   }
-};
+}

@@ -1,3 +1,8 @@
+.containerRegisterMedico{
+    display: flex;
+    gap: 20px;
+}
+
 .containerStep {
     width: 25%;
     height: 100%;
@@ -25,17 +30,19 @@
     background-image: url('../../assets/images/backgroundDesktop.png');
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center center;
     width: 75%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 24px;
 }
 
 .step{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 .stepTitle{
@@ -81,6 +88,8 @@
     }
 
     .containerFormRegisterMedico{
+        background-image: url('../../assets/images/logoJustina2.png');
+        height: 100%;
         width: 100%;
     }
 }

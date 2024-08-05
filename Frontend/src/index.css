@@ -65,6 +65,7 @@ body {
     background: linear-gradient(90deg, #3F8CFF 0%, #DE92EB 100%);
     color: #FFFFFF;
     cursor: pointer;
+    box-shadow: 0px 6px 12px 0px #00000040;
 }
 
 .form {
@@ -74,6 +75,27 @@ body {
     align-items: center;
     flex-direction: column;
     gap: 15px;
+}
+
+.buttonHome {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #FA6C9F;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    padding: 22px 21px;
+    border-radius: 24px;
+    cursor: pointer;
+    gap: 15px;
+}
+
+.iconHome {
+    width: 50px;
 }
 
 @media screen and (max-width: 768px) {

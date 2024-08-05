@@ -6,7 +6,6 @@ import '../../index.css'
 
 function Home() {
     const navigate = useNavigate()
-    localStorage.clear()
 
     const handleNavigation = (userType) => {
         navigate(`/login?userType=${userType}`)
@@ -21,12 +20,12 @@ function Home() {
                 <img className={style.logoHome} src={images.LogoJustina2} alt="Logo" />
                 <h1>Elige tu perfil</h1>
                 <div className={style.divButtonHome}>
-                    <div className={style.buttonHome} onClick={() => handleNavigation('Pacient')}>
-                        <img className={style.iconHome} src={icons.IconPaciente} alt="Paciente" />
+                    <div className="buttonHome" onClick={() => handleNavigation('Pacient')}>
+                        <img className="iconHome" src={icons.IconPaciente} alt="Paciente" />
                         <p>Paciente</p>
                     </div>
-                    <div className={style.buttonHome} onClick={() => handleNavigation('Medic')}>
-                        <img className={style.iconHome} src={icons.IconMedico} alt="Medico" />
+                    <div className="buttonHome" onClick={() => handleNavigation('Medic')}>
+                        <img className="iconHome" src={icons.IconMedico} alt="Medico" />
                         <p>Medico</p>
                     </div>
                 </div>

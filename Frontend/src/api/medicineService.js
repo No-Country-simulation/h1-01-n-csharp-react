@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from 'axios'
 
-const BASE_URL = 'http://justinaapi.somee.com/api/Medicine';
+const BASE_URL = 'https://justinaapi.somee.com/api/Medicine'
 
 export const getAllMedicines = async () => {
   try {
@@ -8,10 +8,10 @@ export const getAllMedicines = async () => {
       headers: {
         'Accept': 'text/plain'
       }
-    });
-    return response.data;
+    })
+    return response.data
   } catch (error) {
-    console.error('Error fetching medicines:', error);
-    throw error;
+    console.error('Error fetching medicines:', error)
+    throw error
   }
-};
+}

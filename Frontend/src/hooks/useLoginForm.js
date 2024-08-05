@@ -1,14 +1,15 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { authenticateUser } from '../api/userService'
-import { jwtDecode } from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
+import UserContext from '../context/UserContext'
 
 const useLoginForm = (userType) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const navigate = useNavigate()
-  const registerRoute = userType === 'Medic' ? '/register-medico' : userType === 'Pacient' ? '/register-paciente' : '/'
+  const { login } = useContext(UserContext);
+  const registerRoute = userType === 'Medic' ? `/register-medico?userType=${userType}` : userType === 'Pacient' ? `/register-paciente?userType=${userType}` : '/'
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -21,16 +22,13 @@ const useLoginForm = (userType) => {
     try {
       const response = await authenticateUser({ email, password })
       if (response && response.token) {
-        const decodedUser = jwtDecode(response.token)
-        const typeUser = decodedUser["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]
+        const decodedUser = await login(response.token)
 
-        if (typeUser === userType) {
-          localStorage.setItem('token', response.token)
-          const dashboardRoute = userType === 'Medic' ? '/dashboard-medico' : '/dashboard-paciente'
+        if (decodedUser.rol === userType) {
+          const dashboardRoute = userType === 'Medic' ? '/dashboard-medico' : userType === 'Pacient' ? '/dashboard-paciente' : '/'
           navigate(dashboardRoute)
         } else {
           setError('Tipo de usuario incorrecto.')
-          return;
         }
       }
     } catch (error) {

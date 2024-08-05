@@ -8,10 +8,11 @@
 
 .inputRegister {
     background: #FF66C475 !important;
+    width: 17vw;
 }
 
 .divButton {
-    width: 75vw;
+    width: 70vw;
     display: flex;
     justify-content: flex-end;
     padding-right: 100px;
@@ -27,4 +28,23 @@
 .stepText {
     font-size: 18px;
     font-weight: 700;
+}
+
+.formRegister {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 70px;
+    justify-items: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .formRegister {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .inputRegister {
+        width: 100%;
+    }
 }

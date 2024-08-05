@@ -1,0 +1,65 @@
+.containerTreatment{
+    margin: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.containerDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.divTreatment{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #959090;
+    border-radius: 8px;
+    padding: 8px;
+    gap: 4px;
+    width: 250px;
+}
+
+.titleTreatment{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.titlePatologies{
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.textAreaObser{
+    width: 260px;
+    height: 100px;
+}
+
+.noTreatment{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.addTreatmentButton{
+    cursor: pointer;
+    padding: 5px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 8px 0px 8px;
+    height: 70px;
+    background: linear-gradient(0deg, rgba(255, 102, 196, 0.5) -0.46%, rgba(81, 112, 255, 0.5) 54.34%, rgba(81, 112, 255, 0.5) 99.15%);
+}
+
+.iconAdd {
+    width: 60px;
+}

@@ -1,0 +1,126 @@
+.containerList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0px 60px;
+    gap: 15px;
+}
+
+.searchPatient {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    width: 250px;
+    height: 25px;
+    border-radius: 16px;
+    background: linear-gradient(0deg, rgba(255, 102, 196, 0.5) -0.46%, rgba(81, 112, 255, 0.5) 54.34%, rgba(81, 112, 255, 0.5) 99.15%);
+}
+
+.iconSearch {
+    width: 15px;
+    height: 15px;
+}
+
+.iconAdd {
+    width: 30px;
+}
+
+.inputSearch {
+    background: none;
+    border: none;
+    width: 235px;
+    height: 25px;
+    padding: 5px;
+}
+
+.inputSearch:focus {
+    outline: none;
+}
+
+.headerListPatient {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonAdd {
+    cursor: pointer;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 8px 0px 8px;
+    height: 30px;
+    background: linear-gradient(0deg, rgba(255, 102, 196, 0.5) -0.46%, rgba(81, 112, 255, 0.5) 54.34%, rgba(81, 112, 255, 0.5) 99.15%);
+}
+
+.textHeader {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.boardPatient {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    background: #D8F6F8B2;
+    height: 100px;
+    border-radius: 16px 16px 0px 16px;
+    cursor: pointer;
+}
+
+.photoPatient {
+    width: 50px;
+    border: 1px solid white;
+    border-radius: 50px;
+}
+
+.divInfoPatient {
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.backLink {
+    cursor: pointer;
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.listPatients{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .searchPatient {
+        display: none;
+    }
+
+    .containerList {
+        margin: 0 10px;
+    }
+
+    .boardPatient {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: start;
+        gap: 10px;
+        height: 300px;
+    }
+
+    .divInfoPatient {
+        gap: 10px;
+    }
+}

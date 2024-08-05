@@ -5,12 +5,13 @@ import RegisterMedico from './pages/registerMedico/index'
 import RegisterPaciente from './pages/registerPaciente/index'
 import DashboardMedico from './pages/dashboardMedico/index'
 import DashboardPaciente from './pages/dashboardPaciente/index'
-import ProtectedRoute from './components/ProtectedRoute/index'
+import MedicPacientes from './pages/medicPacientes/index'
+import MedicTratamientos from './pages/medicTratamientos/index'
+import MedicTurnos from './pages/medicTurnos/index'
 import { UserProvider } from './context/UserContext'
 import './App.css'
 
 function App() {
-
   return (
     <UserProvider>
       <Router>
@@ -19,14 +20,11 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register-medico" element={<RegisterMedico />} />
           <Route path="/register-paciente" element={<RegisterPaciente />} />
-          <Route
-            path="/dashboard-medico"
-            element={<ProtectedRoute allowedRoles='Medic' element={<DashboardMedico />} />}
-          />
-          <Route
-            path="/dashboard-paciente"
-            element={<ProtectedRoute allowedRoles='Pacient' element={<DashboardPaciente />} />}
-          />
+          <Route path="/dashboard-medico" element={<DashboardMedico />} />
+          <Route path="/dashboard-paciente" element={<DashboardPaciente />} />
+          <Route path="/medic-pacientes" element={<MedicPacientes />} />
+          <Route path="/medic-tratamientos" element={<MedicTratamientos />} />
+          <Route path="/medic-turnos" element={<MedicTurnos />} />
         </Routes>
       </Router>
     </UserProvider>

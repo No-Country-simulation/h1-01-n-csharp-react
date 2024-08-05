@@ -4,7 +4,9 @@ import ImageLoginPaciente from './imgLoginPaciente.png'
 import ImageLoginPacienteMobile from './imgLoginPacienteMobile.png'
 import BackgroundStep from './backgroundStep.png'
 import BackgroundDesktop from './backgroundDesktop.png'
+import BackgroundDashboard from './backgroundDashboard.png'
 import LogoJustina2 from './logoJustina2.png'
+import PhotoDefault from './userPhotoDefault.jpg'
 
 export default {
     "LogoJustina": LogoJustina,
@@ -13,5 +15,7 @@ export default {
     "ImageLoginPaciente": ImageLoginPaciente,
     "ImageLoginPacienteMobile": ImageLoginPacienteMobile,
     "BackgroundStep": BackgroundStep,
-    "BackgroundDesktop": BackgroundDesktop
+    "BackgroundDesktop": BackgroundDesktop,
+    "PhotoDefault": PhotoDefault,
+    "BackgroundDashboard": BackgroundDashboard
 }
